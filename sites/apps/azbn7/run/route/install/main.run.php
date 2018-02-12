@@ -294,6 +294,16 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 			
 		))
 	;
+
+	$roles[] = $this->Azbn7->mdl('DB')->create('role', array(
+		'title' => 'Администраторы',
+		'right' => $this->Azbn7->getJSON(array(
+			'site.admin.login' => 1,
+		)),
+		'param' => $this->Azbn7->getJSON(array(
+			
+		)),
+	));
 	
 	$e = array();
 	$b = array();
@@ -333,7 +343,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 						
 						foreach($p['users'] as $__user) {
 							
-							$this->Azbn7->mdl('DB')->create('user', array(
+							$__user_id = $this->Azbn7->mdl('DB')->create('user', array(
 								'created_at' => $this->Azbn7->created_at,
 								'login' => $__user['login'],
 								'email' => $__user['email'],
@@ -341,6 +351,12 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 								'key' => $this->Azbn7->created_at . mb_strtoupper($this->Azbn7->mdl('Session')->getPassHash($this->Azbn7->randstr(32), 'api', $__user['login']), $this->Azbn7->config['charset']),
 								'right' => $this->Azbn7->getJSON($__user['right']),
 								'param' => $this->Azbn7->getJSON($__user['param']),
+							));
+
+							$this->Azbn7->mdl('DB')->create('role_bound', array(
+								'role' => 1,
+								'item' => $__user_id,
+								'type' => 'user',
 							));
 							
 						}

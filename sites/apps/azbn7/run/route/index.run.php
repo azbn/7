@@ -45,6 +45,8 @@ $d::test(array(
 //$this->Azbn7->mdl('Viewer')->echo_dev($this->Azbn7->mdl('Entity')->inState($param['entity']['entity']['id'], 'default'), true);
 //$this->Azbn7->mdl('Viewer')->echo_dev($this->Azbn7->mdl('Entity')->inState($param['entity']['entity']['id'], 'test'), true);
 
+$this->Azbn7->mdl('Viewer')->echo_dev($this->Azbn7->mdl('Session')->hasRole(1, $this->Azbn7->mdl('Site')->is('user'), 'user'));
+
 $param['entity'] = $this->Azbn7->mdl('Entity')->item(1);
 
 $this->Azbn7->mdl('Site')

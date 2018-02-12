@@ -87,11 +87,6 @@ class Session
 		unset($_SESSION[$type]);
 	}
 	
-	public function hasRole($profile_id = 0, $role_id = 0, $type = 'user')
-	{
-		
-	}
-	
 	public function getPassHash($pass = '', $type = '', $login = '')
 	{
 		return $this->Azbn7->hash($pass, $type, $login);
@@ -144,6 +139,29 @@ class Session
 			/* --------- /ext__event ---------- */
 			
 			
+		}
+		
+	}
+
+	public function hasRole($role_id = 0, $item_id = 0, $item_type = 'user')
+	{
+		
+		if(is_array($role_id)) {
+			$role_str = " AND `role` IN (" . implode(',', $role_id) . ") ";
+		} else {
+			$role_str = " AND `role` = '{$role_id}' ";
+		}
+		
+		$role_bound = $this->Azbn7->mdl('DB')->one('role_bound', "`item` = '{$item_id}' {$role_str} AND `type` = '{$item_type}'");
+		
+		if($role_bound['id']) {
+
+			return true;
+
+		} else {
+
+			return false;
+
 		}
 		
 	}
