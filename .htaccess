@@ -1,0 +1,129 @@
+#
+php_flag display_startup_errors on
+php_flag display_errors on
+#php_flag html_errors on
+php_flag log_errors on
+#php_flag ignore_repeated_errors off
+#php_flag ignore_repeated_source off
+php_flag report_memleaks on
+#php_flag track_errors on
+#php_value docref_root 0
+#php_value docref_ext 0
+php_value error_log var/log/azbn7/errors.log
+#php_value error_reporting -1
+#php_value log_errors_max_len 0
+#php_value upload_max_filesize 32M
+#
+
+
+
+# --------------------------------------------------
+
+
+Options All -Indexes
+AddDefaultCharset UTF-8
+
+
+#AddOutputFilterByType DEFLATE text/html
+#AddOutputFilterByType DEFLATE text/plain
+#AddOutputFilterByType DEFLATE application/javascript
+#AddOutputFilterByType DEFLATE application/rss+xml
+
+
+#ErrorDocument 401 /var/error/by_code.php?code=401
+ErrorDocument 403 /var/error/by_code.php?code=403
+#ErrorDocument 404 /var/error/by_code.php?code=404
+#ErrorDocument 500 /var/error/by_code.php?code=500
+#ErrorDocument 502 /var/error/by_code.php?code=502
+#ErrorDocument 503 /var/error/by_code.php?code=503
+#ErrorDocument 504 /var/error/by_code.php?code=504
+
+
+
+Redirect 301 /mainpage/ /
+
+
+AuthType Basic
+AuthName "Azbn7. Need access"
+AuthUserFile D:\os\OpenServer\domains\azbn7.localhost\.htpasswd
+Require valid-user
+
+
+<FilesMatch ".(htaccess|htpasswd|htgroup|ini|phps|fla|psd|log|sh|cache)$">
+	Order allow,deny
+	Deny from all
+</FilesMatch>
+
+<FilesMatch "^/.git">
+	Order allow,deny
+	Deny from all
+</FilesMatch>
+
+
+
+<IfModule mod_headers.c>
+	
+	<FilesMatch "\.(ico|pdf|flv|woff|woff2|ttf|otf|eot|mp4|mov|avi)$">
+		Header set Cache-Control "max-age=29030400, public"
+	</FilesMatch>
+	
+	<FilesMatch "\.(jpg|jpeg|png|gif|swf|svg)$">
+		Header set Cache-Control "max-age=604800, public"
+	</FilesMatch>
+	
+	<FilesMatch "\.(xml|txt|css|js)$">
+		Header set Cache-Control "max-age=604800, proxy-revalidate"
+	</FilesMatch>
+	
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+
+#RewriteBase /
+
+
+#перенаправление на https
+#RewriteCond %{HTTPS} !on
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule .* index.php [L]
+RewriteRule . /index.php [L]
+
+
+</IfModule>
+
+# /--------------------------------------------------
+
+
+
+#
+#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+#
+#RewriteCond $1/ !^(forum)(/)(index\.php|img|js|css|upload|download|import)/
+#RewriteRule ^forum/(.*)$ forum/index.php/$1 [L]
+#
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d [OR]
+#RewriteCond %{REQUEST_URI} =/
+##RewriteRule ^(.*)$ forum/index.php/$1 [L]
+#RewriteRule ^(.*)$ forum/index.php?$1 [L]
+#
+
+#<IfModule mod_expires.c>
+#	ExpiresActive On
+#	ExpiresDefault "access plus 5 minutes"
+#
+#	ExpiresByType image/gif "access plus 10 days"
+#	ExpiresByType image/jpeg "access plus 10 days"
+#</IfModule>

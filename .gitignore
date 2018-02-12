@@ -1,0 +1,15 @@
+var/backup/azbn7/*
+!var/backup/azbn7/.htaccess
+!var/backup/azbn7/.gitkeep
+var/cache/azbn7/*
+!var/cache/azbn7/.htaccess
+!var/cache/azbn7/.gitkeep
+var/route/azbn7/*
+!var/route/azbn7/.htaccess
+!var/route/azbn7/.gitkeep
+var/log/azbn7/*
+!var/log/azbn7/.htaccess
+!var/log/azbn7/.gitkeep
+var/upload/azbn7/*
+!var/upload/azbn7/.htaccess
+!var/upload/azbn7/.gitkeep
