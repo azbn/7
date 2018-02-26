@@ -99,6 +99,13 @@
 		<div class="col-md-4" >
 			
 			<?
+			$this->Azbn7->mdl('Viewer')->tpl('_/editor/roles', array(
+				'item' => $param['item'],
+				'type' => 'profile',
+			));
+			?>
+			
+			<?
 			$this->Azbn7->mdl('Viewer')->tpl('_/editor/rights', array(
 				'item' => $param['item'],
 				'type' => 'profile',

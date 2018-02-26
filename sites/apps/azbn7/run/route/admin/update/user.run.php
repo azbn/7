@@ -34,7 +34,25 @@ if(count($_POST['item'])) {
 		$item['key'] = $this->Azbn7->c_s($_POST['item']['key']);
 	}
 	
-	$this->Azbn7->mdl('DB')->update('user', $item, "id = '$item_id'");
+	$this->Azbn7->mdl('DB')->update('user', $item, "`id` = '$item_id'");
+	
+	$roles = array();
+	$this->Azbn7->mdl('DB')->delete('role_bound', "`item` = '{$item_id}' AND `type` = 'user'");
+	if(count($_POST['role'])) {
+		foreach($_POST['role'] as $id => $value) {
+			$value = $this->Azbn7->as_int($value);
+			if($value) {
+				//$roles[$id] = $value;
+				
+				$this->Azbn7->mdl('DB')->create('role_bound', array(
+					'role' => $id,
+					'item' => $item_id,
+					'type' => 'user',
+				));
+				
+			}
+		}
+	}
 	
 	if($this->Azbn7->mdl('Site')->is('user') == $item_id) {
 		$this->Azbn7->mdl('Session')->reloadRights('user');

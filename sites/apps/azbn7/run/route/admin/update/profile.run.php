@@ -35,6 +35,24 @@ if(count($_POST['item'])) {
 	
 	$this->Azbn7->mdl('DB')->update('profile', $item, "id = '$item_id'");
 	
+	$roles = array();
+	$this->Azbn7->mdl('DB')->delete('role_bound', "`item` = '{$item_id}' AND `type` = 'profile'");
+	if(count($_POST['role'])) {
+		foreach($_POST['role'] as $id => $value) {
+			$value = $this->Azbn7->as_int($value);
+			if($value) {
+				//$roles[$id] = $value;
+				
+				$this->Azbn7->mdl('DB')->create('role_bound', array(
+					'role' => $id,
+					'item' => $item_id,
+					'type' => 'profile',
+				));
+				
+			}
+		}
+	}
+	
 	$this->Azbn7->go2($this->Azbn7->mdl('Site')->url('/admin/edit/profile/' . $item_id . '/'));
 	
 }

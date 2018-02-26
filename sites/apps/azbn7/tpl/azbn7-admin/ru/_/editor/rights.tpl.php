@@ -8,23 +8,29 @@ if(count($rights)) {
 
 <div class="azbn-rights-list <? if($this->Azbn7->mdl('Session')->hasRight('user', 'site.' . $param['type'] . '.item.right.access')) {} else { echo 'azbn7-hidden'; } ?> " >
 
+	<h4>Персональные права</h4>
+	
+	<hr />
+	
 	<div class="mass-btns float-sm-right" >
 		<a class="check-btn btn btn-sm btn-success" data-check-all="1" href="#checkall" >Все</a>
 		/
 		<a class="check-btn btn btn-sm btn-warning" data-check-all="0" href="#uncheckall" >Ничего</a>
 	</div>
 
-<?
+	<?
 	foreach($rights as $row) {
-?>
+	?>
 
-<div class="form-group " >
-	<label><input type="checkbox" class="right-item-cb" name="item[right][<?=$row['uid'];?>]" value='1' <?if(isset($param['item']['right'][$row['uid']])) { echo 'checked';}?> /> <?=$row['title'];?></label>
-</div>
+	<div class="form-group " >
+		<label><input type="checkbox" class="right-item-cb" name="item[right][<?=$row['uid'];?>]" value='1' <?if(isset($param['item']['right'][$row['uid']])) { echo 'checked';}?> /> <?=$row['title'];?></label>
+	</div>
 
-<?
+	<?
 	}
-?>
+	?>
+	
+	<div class="spacer" data-space="20" ></div>
 
 </div>
 

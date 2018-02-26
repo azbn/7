@@ -266,7 +266,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 		))
 	;
 	
-	
+	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.admin.cron', 'title' => 'Выполнение заданий по крону (cron)'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.admin.login', 'title' => 'Доступ к админке'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.upload', 'title' => 'Загрузка файлов на сервер'));
 	
@@ -302,6 +302,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 		'title' => 'Системный аккаунт',
 		'right' => $this->Azbn7->getJSON(array(
 			'site.admin.login' => 1,
+			'site.admin.cron' => 1,
 		)),
 		'param' => $this->Azbn7->getJSON(array(
 			
@@ -313,6 +314,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 		'title' => 'Администратор',
 		'right' => $this->Azbn7->getJSON(array(
 			'site.admin.login' => 1,
+			'site.admin.cron' => 1,
 		)),
 		'param' => $this->Azbn7->getJSON(array(
 			
@@ -324,6 +326,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 		'title' => 'Разработчик',
 		'right' => $this->Azbn7->getJSON(array(
 			'site.admin.login' => 1,
+			'site.admin.cron' => 1,
 		)),
 		'param' => $this->Azbn7->getJSON(array(
 			

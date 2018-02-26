@@ -32,6 +32,23 @@ if(count($_POST['item'])) {
 	
 	if($item['id']) {
 		
+		$roles = array();
+		if(count($_POST['role'])) {
+			foreach($_POST['role'] as $id => $value) {
+				$value = $this->Azbn7->as_int($value);
+				if($value) {
+					//$roles[$id] = $value;
+					
+					$this->Azbn7->mdl('DB')->create('role_bound', array(
+						'role' => $id,
+						'item' => $item['id'],
+						'type' => 'user',
+					));
+					
+				}
+			}
+		}
+		
 		$this->Azbn7->go2($this->Azbn7->mdl('Site')->url('/admin/edit/user/' . $item['id'] . '/'));
 		
 	} else {

@@ -128,6 +128,7 @@ class Session
 			
 			$_SESSION[$type]['right'] = $this->Azbn7->parseJSON($item['right']);
 			
+			$this->loadRoleRights($type);
 			
 			/* ---------- ext__event ---------- */
 			$this->Azbn7
