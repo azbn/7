@@ -62,6 +62,7 @@ $CONFIG = array(
 								'user' => $app_uid . '_user',
 								'profile' => $app_uid . '_profile',
 								'right' => $app_uid . '_right',
+								'stage' => $app_uid . '_stage',
 								
 								//'cache' => $app_uid . '_cache',
 								//'log' => $app_uid . '_log',

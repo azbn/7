@@ -178,13 +178,21 @@ $this->Azbn7
 					?>
 					
 					<?
+					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.role.all.access')) {
+					?>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/role/');?>" ><i class="fa fa-universal-access" aria-hidden="true"></i> Роли</a>
+					<?
+					}
+					?>
+					
+					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.alias.all.access')) {
 					?>
 					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/alias/');?>" ><i class="fa fa-random" aria-hidden="true"></i> Синонимы</a>
 					<?
 					}
 					?>
-
+					
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.state.all.access')) {
 					?>

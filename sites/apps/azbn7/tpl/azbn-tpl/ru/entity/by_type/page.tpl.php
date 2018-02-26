@@ -5,6 +5,11 @@ $entity = &$param['entity'];
 ?>
 
 <?
+$this->Azbn7->mdl('Viewer')->echo_dev($this->Azbn7->mdl('Session')->hasRole(1, $this->Azbn7->mdl('Site')->is('user'), 'user'), true);
+$this->Azbn7->mdl('Viewer')->echo_dev($_SESSION, true);
+?>
+
+<?
 $this->Azbn7->mdl('Viewer')
 	->tpl('_/banner/entity/by_type/page/header', array(
 		'__this_tpl' => array(

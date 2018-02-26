@@ -12,12 +12,10 @@ class Session
 		$this->event_prefix = strtolower(str_replace('\\', '.', static::class));
 	}
 	
-	/*
 	public function is($type = 'user')
 	{
 		return $this->Azbn7->as_num(isset($_SESSION[$type]['id']) ? $_SESSION[$type]['id'] : 0);
 	}
-	*/
 	
 	public function login($type = 'user', $login = '', $pass = '')
 	{
@@ -142,7 +140,7 @@ class Session
 		}
 		
 	}
-
+	
 	public function hasRole($role_id = 0, $item_id = 0, $item_type = 'user')
 	{
 		
@@ -155,13 +153,41 @@ class Session
 		$role_bound = $this->Azbn7->mdl('DB')->one('role_bound', "`item` = '{$item_id}' {$role_str} AND `type` = '{$item_type}'");
 		
 		if($role_bound['id']) {
-
+			
 			return true;
-
+			
 		} else {
-
+			
 			return false;
-
+			
+		}
+		
+	}
+	
+	public function loadRoleRights($type = 'user')
+	{
+		
+		$role_bounds = $this->Azbn7->mdl('DB')->read('role_bound', "type = '{$type}' AND item = '{$_SESSION[$type]['id']}'");
+		
+		if(!$_SESSION[$type]['roles']) {
+			$_SESSION[$type]['roles'] = array();
+		}
+		
+		if(count($role_bounds)) {
+			
+			foreach($role_bounds as $rb) {
+				
+				$role = $this->Azbn7->mdl('DB')->one('role', "id = '{$rb['role']}'");
+				
+				$role['right'] = $this->Azbn7->parseJSON($role['right']);
+				$role['param'] = $this->Azbn7->parseJSON($role['param']);
+				
+				$_SESSION[$type]['roles'][$role['id']] = $role;
+				
+				$_SESSION[$type]['right'] = array_merge($_SESSION[$type]['right'], $role['right']);
+				
+			}
+			
 		}
 		
 	}

@@ -132,6 +132,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 		
 		->exec("CREATE TABLE IF NOT EXISTS `" . $this->Azbn7->mdl('DB')->t['role'] . "` (
 				`id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				`uid` VARCHAR(255) DEFAULT '',
 				`title` VARCHAR(255) DEFAULT '',
 				`right` MEDIUMBLOB DEFAULT NULL,
 				`param` MEDIUMBLOB DEFAULT NULL
@@ -170,7 +171,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 				`id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				`role` BIGINT DEFAULT '0',
 				`item` BIGINT DEFAULT '0',
-				`type` VARCHAR(255) DEFAULT 'profile',
+				`type` VARCHAR(255) DEFAULT 'user',
 				FOREIGN KEY (role) REFERENCES " . $this->Azbn7->mdl('DB')->t['role'] . "(id) ON DELETE CASCADE
 			) ENGINE=" . $this->Azbn7->mdl('DB')->engine . " DEFAULT CHARSET=" . $this->Azbn7->mdl('DB')->charset . ";
 		")
@@ -280,6 +281,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.sysopt.all.access', 'title' => 'Доступ к настройкам сайта'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.entity_type.all.access', 'title' => 'Доступ к типам данных'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.state.all.access', 'title' => 'Доступ к состояниям'));
+	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.role.all.access', 'title' => 'Доступ к ролям'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.alias.all.access', 'title' => 'Доступ к синонимам'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.log.all.access', 'title' => 'Доступ к логам'));
 	
@@ -294,9 +296,54 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 			
 		))
 	;
-
+	
 	$roles[] = $this->Azbn7->mdl('DB')->create('role', array(
-		'title' => 'Администраторы',
+		'uid' => 'system',
+		'title' => 'Системный аккаунт',
+		'right' => $this->Azbn7->getJSON(array(
+			'site.admin.login' => 1,
+		)),
+		'param' => $this->Azbn7->getJSON(array(
+			
+		)),
+	));
+	
+	$roles[] = $this->Azbn7->mdl('DB')->create('role', array(
+		'uid' => 'administrator',
+		'title' => 'Администратор',
+		'right' => $this->Azbn7->getJSON(array(
+			'site.admin.login' => 1,
+		)),
+		'param' => $this->Azbn7->getJSON(array(
+			
+		)),
+	));
+	
+	$roles[] = $this->Azbn7->mdl('DB')->create('role', array(
+		'uid' => 'developer',
+		'title' => 'Разработчик',
+		'right' => $this->Azbn7->getJSON(array(
+			'site.admin.login' => 1,
+		)),
+		'param' => $this->Azbn7->getJSON(array(
+			
+		)),
+	));
+	
+	$roles[] = $this->Azbn7->mdl('DB')->create('role', array(
+		'uid' => 'moderator',
+		'title' => 'Модератор',
+		'right' => $this->Azbn7->getJSON(array(
+			'site.admin.login' => 1,
+		)),
+		'param' => $this->Azbn7->getJSON(array(
+			
+		)),
+	));
+	
+	$roles[] = $this->Azbn7->mdl('DB')->create('role', array(
+		'uid' => 'editor',
+		'title' => 'Редактор',
 		'right' => $this->Azbn7->getJSON(array(
 			'site.admin.login' => 1,
 		)),
@@ -355,6 +402,12 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 
 							$this->Azbn7->mdl('DB')->create('role_bound', array(
 								'role' => 1,
+								'item' => $__user_id,
+								'type' => 'user',
+							));
+							
+							$this->Azbn7->mdl('DB')->create('role_bound', array(
+								'role' => 2,
 								'item' => $__user_id,
 								'type' => 'user',
 							));
