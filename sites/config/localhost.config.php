@@ -64,9 +64,6 @@ $CONFIG = array(
 								'profile' => $app_uid . '_profile',//профили пользователей
 								'right' => $app_uid . '_right',//права
 								
-								'bp' => $app_uid . '_bp',//бизнес-процессы
-								'bp_stage' => $app_uid . '_bp_stage',//состояния бизнес-процессов
-								
 								'entity' => $app_uid . '_entity',//сущности
 								'entity_type' => $app_uid . '_entity_type',//типы сущностей
 								'entity_seo' => $app_uid . '_entity_seo',//сео-настройки сущностей
@@ -74,6 +71,11 @@ $CONFIG = array(
 								'entity_data' => $app_uid . '_entity_data',//данные сущностей
 								'entity_search' => $app_uid . '_entity_search',//поисковый индекс сущностей
 								'entity_state' => $app_uid . '_entity_state',//состояния сущностей
+								
+								'bp' => $app_uid . '_bp',//бизнес-процессы
+								'bp_stream' => $app_uid . '_bp_stream',//потоки бизнес-процессов
+								'bp_stage' => $app_uid . '_bp_stage',//этапы бизнес-процессов
+								
 							),
 						),
 	),

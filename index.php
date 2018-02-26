@@ -94,6 +94,12 @@ $Azbn7
 		'uid' => 'Viewer',
 		'param' => array()
 	))
+	->load(array(
+		'dir' => 'app',
+		'mdl' => 'BP',
+		'uid' => 'BP',
+		'param' => array()
+	))
 ;
 
 $Azbn7
