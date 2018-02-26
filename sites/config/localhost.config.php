@@ -43,6 +43,7 @@ $CONFIG = array(
 							'charset' => 'UTF8',
 							'engine' => 'MyISAM',//'InnoDB',
 							'prefix' => $app_uid,
+							'prefix_data' => 'z',
 							'max_value' => array(
 								'int' => '2147483647',
 								'bigint' => PHP_INT_MAX,//'9223372036854775807',
@@ -52,36 +53,27 @@ $CONFIG = array(
 								\PDO::ATTR_PERSISTENT => true,
 							),
 							't' => array(
-								'sysopt' => $app_uid . '_sysopt',
+								'sysopt' => $app_uid . '_sysopt',//системные настройки
 								'sysopt_data' => $app_uid . '_sysopt_data',
-								'alias' => $app_uid . '_alias',
-								'log' => $app_uid . '_log',
-								'state' => $app_uid . '_state',
-								'role' => $app_uid . '_role',
-								'role_bound' => $app_uid . '_role_bound',
-								'user' => $app_uid . '_user',
-								'profile' => $app_uid . '_profile',
-								'right' => $app_uid . '_right',
-								'stage' => $app_uid . '_stage',
+								'alias' => $app_uid . '_alias',//алиасы
+								'log' => $app_uid . '_log',//логи
+								'state' => $app_uid . '_state',//состояния
+								'role' => $app_uid . '_role',//роли
+								'role_bound' => $app_uid . '_role_bound',//связи роли-пользователи
+								'user' => $app_uid . '_user',//пользователи-админы
+								'profile' => $app_uid . '_profile',//профили пользователей
+								'right' => $app_uid . '_right',//права
 								
-								//'cache' => $app_uid . '_cache',
-								//'log' => $app_uid . '_log',
-								//'search' => $app_uid . '_search',
-								//'option' => $app_uid . '_option',
+								'bp' => $app_uid . '_bp',//бизнес-процессы
+								'bp_stage' => $app_uid . '_bp_stage',//состояния бизнес-процессов
 								
-								//'user' => $app_uid . '_user',
-								//'profile' => $app_uid . '_profile',
-								//'upload' => $app_uid . '_upload',
-								//'file' => $app_uid . '_file',
-								//'img' => $app_uid . '_img',
-								
-								'entity' => $app_uid . '_entity',
-								'entity_type' => $app_uid . '_entity_type',
-								'entity_seo' => $app_uid . '_entity_seo',
-								'entity_bound' => $app_uid . '_entity_bound',
-								'entity_data' => $app_uid . '_entity_data',
-								'entity_search' => $app_uid . '_entity_search',
-								'entity_state' => $app_uid . '_entity_state',
+								'entity' => $app_uid . '_entity',//сущности
+								'entity_type' => $app_uid . '_entity_type',//типы сущностей
+								'entity_seo' => $app_uid . '_entity_seo',//сео-настройки сущностей
+								'entity_bound' => $app_uid . '_entity_bound',//связи сущностей
+								'entity_data' => $app_uid . '_entity_data',//данные сущностей
+								'entity_search' => $app_uid . '_entity_search',//поисковый индекс сущностей
+								'entity_state' => $app_uid . '_entity_state',//состояния сущностей
 							),
 						),
 	),
@@ -108,13 +100,13 @@ $EXT__ON_LOAD = array(
 		'ext' => 'Cron',
 		'param' => array()
 	),
-	
+	/*
 	array(
 		'dir' => 'app',
 		'ext' => 'Azbn_ru/Azbn7Ext/DefaultExt',
 		'param' => array()
 	),
-	
+	*/
 	array(
 		'dir' => 'app',
 		'ext' => 'Azbn_ru/SimpleCache/SimpleCache',

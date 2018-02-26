@@ -66,13 +66,15 @@ if($text != '' && mb_strlen($text, $this->Azbn7->config['charset']) > 2) {
 	$items = array();
 	
 	if(count($search_items)) {
-		$item_arr = '';
+		
+		$item_arr = array();
+		
 		foreach($search_items as $item) {
 			$item_arr[] = $item['id'];
 			
-			$_item =  array(
+			$_item = array(
 				'entity' => $item,
-				'item' => $this->Azbn7->mdl('DB')->one($this->Azbn7->mdl('Entity')->getTable($item['entity_type']), "entity = '{$item['id']}'"),
+				'item' => $this->Azbn7->mdl('DB')->one($this->Azbn7->mdl('Entity')->getTable($item['entity_type']), "`entity` = '{$item['id']}'"),
 			);
 			
 			$_item['entity']['link'] = $this->Azbn7->mdl('Site')->url('/' . $_item['entity']['url'] . '/');
@@ -83,6 +85,7 @@ if($text != '' && mb_strlen($text, $this->Azbn7->config['charset']) > 2) {
 			$items[] = $_item;
 			
 		}
+		
 	}
 	
 	$param['response']['entities'] = $items;

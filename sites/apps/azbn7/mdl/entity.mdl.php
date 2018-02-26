@@ -12,12 +12,15 @@ class Entity
 		$this->event_prefix = strtolower(str_replace('\\', '.', static::class));
 	}
 	
-	public function getTable($uid = 'page', $sub = '')
+	/*, $sub = 'e'*/
+	public function getTable($uid = 'page')
 	{
+		/*
 		if($sub != '') {
 			$sub = '_' . $sub;
 		}
-		return $this->Azbn7->mdl('DB')->prefix . "_" . $uid . $sub;
+		*/
+		return $this->Azbn7->mdl('DB')->prefix . '_' . $this->Azbn7->mdl('DB')->prefix_data . '_' . $uid;
 	}
 	
 	public function createType($e = array())
@@ -124,7 +127,7 @@ class Entity
 		))
 	{
 		
-		$type = $this->Azbn7->mdl('DB')->one('entity_type', "uid = '{$e['type']}'");
+		$type = $this->Azbn7->mdl('DB')->one('entity_type', "`uid` = '{$e['type']}'");
 		
 		$e['entity']['type'] = $type['id'];
 		$e['entity']['created_at'] = $this->Azbn7->created_at;
@@ -236,7 +239,7 @@ class Entity
 	{
 		$res = 0;
 		
-		$bound = $this->Azbn7->mdl('DB')->one('entity_bound', "parent = '{$b['parent']}' AND child = '{$b['child']}'");
+		$bound = $this->Azbn7->mdl('DB')->one('entity_bound', "`parent` = '{$b['parent']}' AND `child` = '{$b['child']}'");
 		
 		if($bound['id']) {
 			
@@ -294,11 +297,11 @@ class Entity
 	{
 		$items = array();
 		
-		$type = $this->Azbn7->mdl('DB')->one('entity_type', "id = '{$_type}' OR uid = '{$_type}'");
+		$type = $this->Azbn7->mdl('DB')->one('entity_type', "`id` = '{$_type}' OR `uid` = '{$_type}'");
 		
 		if($type['id']) {
 			
-			$entities = $this->Azbn7->mdl('DB')->read('entity', "type = '{$type['id']}' AND $where_entities");
+			$entities = $this->Azbn7->mdl('DB')->read('entity', "`type` = '{$type['id']}' AND $where_entities");
 			
 			if(count($entities)) {
 				
@@ -342,7 +345,7 @@ class Entity
 			
 		} else {
 			
-			$entity['entity'] = $this->Azbn7->mdl('DB')->one('entity', "id = '$id'");
+			$entity['entity'] = $this->Azbn7->mdl('DB')->one('entity', "`id` = '$id'");
 			
 		}
 		
@@ -372,11 +375,11 @@ class Entity
 			
 			if($id) {
 				
-				$entity['entity'] = $this->Azbn7->mdl('DB')->one('entity', "id = '{$id}'");
+				$entity['entity'] = $this->Azbn7->mdl('DB')->one('entity', "`id` = '{$id}'");
 				
 			} elseif($url != '') {
 				
-				$entity['entity'] = $this->Azbn7->mdl('DB')->one('entity', "url = '{$url}'");
+				$entity['entity'] = $this->Azbn7->mdl('DB')->one('entity', "`url` = '{$url}'");
 				
 			} else {
 				
@@ -388,12 +391,12 @@ class Entity
 				
 				$entity['entity']['param'] = $this->Azbn7->parseJSON($entity['entity']['param']);
 				
-				$entity['type'] = $this->Azbn7->mdl('DB')->one('entity_type', "id = '{$entity['entity']['type']}'");
+				$entity['type'] = $this->Azbn7->mdl('DB')->one('entity_type', "`id` = '{$entity['entity']['type']}'");
 				if(isset($entity['type']['id'])) {
 					$entity['type']['param'] = $this->Azbn7->parseJSON($entity['type']['param']);
 				}
 				
-				$entity['item'] = $this->Azbn7->mdl('DB')->one($this->getTable($entity['type']['uid']), "entity = '{$entity['entity']['id']}'");
+				$entity['item'] = $this->Azbn7->mdl('DB')->one($this->getTable($entity['type']['uid']), "`entity` = '{$entity['entity']['id']}'");
 				if(isset($entity['item']['id'])) {
 					$entity['item']['param'] = $this->Azbn7->parseJSON($entity['item']['param']);
 				}
@@ -423,19 +426,19 @@ class Entity
 	public function updateEntity($id = 0, $e = array('entity' => array(), 'item' => array(),))
 	{
 		
-		$entity = $this->Azbn7->mdl('DB')->one('entity', "id = '$id'");
+		$entity = $this->Azbn7->mdl('DB')->one('entity', "`id` = '$id'");
 		
 		if($entity['id'] && $entity['locked_by'] == 0) {
 			
-			$this->Azbn7->mdl('DB')->update('entity', $e['entity'], "id = '$id'");
+			$this->Azbn7->mdl('DB')->update('entity', $e['entity'], "`id` = '$id'");
 			
 			$e['entity']['id'] = $entity['id'];
 			
-			$type = $this->Azbn7->mdl('DB')->one('entity_type', "id = '{$entity['type']}'");
+			$type = $this->Azbn7->mdl('DB')->one('entity_type', "`id` = '{$entity['type']}'");
 			
 			if($type['id']) {
 				
-				$this->Azbn7->mdl('DB')->update($this->getTable($type['uid']), $e['item'], "entity = '$id'");
+				$this->Azbn7->mdl('DB')->update($this->getTable($type['uid']), $e['item'], "`entity` = '$id'");
 				
 				$this->createRoute($e);
 				
@@ -460,7 +463,7 @@ class Entity
 		
 		$e = array();
 		
-		$e['entity'] = $this->Azbn7->mdl('DB')->one('entity', "id = '$id'");
+		$e['entity'] = $this->Azbn7->mdl('DB')->one('entity', "`id` = '$id'");
 		
 		if($e['entity']['id']) {
 			
@@ -473,13 +476,13 @@ class Entity
 			/* --------- /ext__event ---------- */
 			
 			
-			$this->Azbn7->mdl('DB')->delete('entity', "id = '$id'");
+			$this->Azbn7->mdl('DB')->delete('entity', "`id` = '$id'");
 			
-			$type = $this->Azbn7->mdl('DB')->one('type', "id = '{$e['entity']['type']}'");
+			$type = $this->Azbn7->mdl('DB')->one('type', "`id` = '{$e['entity']['type']}'");
 			
 			if($type['id']) {
 				
-				$this->Azbn7->mdl('DB')->delete($this->getTable($type['uid']), "entity = '$id'");
+				$this->Azbn7->mdl('DB')->delete($this->getTable($type['uid']), "`entity` = '$id'");
 				
 			}
 			

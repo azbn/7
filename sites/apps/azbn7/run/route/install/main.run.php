@@ -219,7 +219,10 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 	;
 	
 	//$this->Azbn7->mdl('DB')->create('state', array('uid' => 'default', 'title' => 'Стандартное состояние записи'));
-	$this->Azbn7->mdl('DB')->create('state', array('uid' => 'test', 'title' => 'Состояние тестирования'));
+	$this->Azbn7->mdl('DB')->create('state', array('parent' => 0, 'uid' => 'test', 'title' => 'Тестирование'));
+	$this->Azbn7->mdl('DB')->create('state', array('parent' => 0, 'uid' => 'hidden', 'title' => 'Скрытый объект'));
+	//$this->Azbn7->mdl('DB')->create('state', array('parent' => 0, 'uid' => 'processing', 'title' => 'Обработка'));
+	//$this->Azbn7->mdl('DB')->create('state', array('parent' => 0, 'uid' => 'waiting', 'title' => 'Ожидание'));
 	
 	$this->Azbn7->mdl('DB')->create('sysopt_data', array('uid' => 'azbn7.created_at', 'title' => 'Дата и время инсталяции сайта'));
 	$this->Azbn7->mdl('DB')->create('sysopt_data', array('uid' => 'azbn7.updated_at', 'title' => 'Дата и время последнего обновления'));

@@ -7,6 +7,7 @@ class Storage_MySQL
 	public $connection = null;
 	public $t = array();
 	public $prefix = '';
+	public $prefix_data = '';
 	public $charset = '';
 	public $engine = '';
 	public $event_prefix = '';//'system.azbn7.mdl.storage_mysql';
@@ -22,6 +23,7 @@ class Storage_MySQL
 			
 			$this->t = $db['t'];
 			$this->prefix = $db['prefix'];
+			$this->prefix_data = $db['prefix_data'];
 			$this->charset = $db['charset'];
 			$this->engine = $db['engine'];
 			
