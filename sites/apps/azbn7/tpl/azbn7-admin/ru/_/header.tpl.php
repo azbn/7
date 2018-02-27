@@ -103,7 +103,7 @@ $this->Azbn7
 			<li class="nav-item "><div class="divider"></div></li>
 			
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-file-text-o" aria-hidden="true"></i> Контент</a>
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-file-alt" ></i> Контент</a>
 				<div class="dropdown-menu">
 					<?
 					$types = $this->Azbn7->mdl('DB')->read('entity_type', "fill = '1'");
@@ -124,7 +124,7 @@ $this->Azbn7
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.upload')) {
 					?>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#multiple-upload" data-toggle="modal" data-target=".azbn7-multiple-upload" ><i class="fa fa-cloud-upload" aria-hidden="true"></i> Массовая загрузка файлов</a>
+					<a class="dropdown-item" href="#multiple-upload" data-toggle="modal" data-target=".azbn7-multiple-upload" ><i class="fas fa-cloud-upload-alt" ></i> Массовая загрузка файлов</a>
 					<?
 					}
 					?>
@@ -133,14 +133,14 @@ $this->Azbn7
 			</li>
 			
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users" aria-hidden="true"></i> Пользователи</a>
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users" ></i> Пользователи</a>
 				<div class="dropdown-menu">
 					
 					
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.user.all.access')) {
 					?>
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/user/');?>" ><i class="fa fa-user-secret" aria-hidden="true"></i> Админы</a>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/user/');?>" ><i class="fas fa-user-secret" ></i> Админы</a>
 					<?
 					}
 					?>
@@ -148,7 +148,7 @@ $this->Azbn7
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.profile.all.access')) {
 					?>
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/profile/');?>" ><i class="fa fa-user-o" aria-hidden="true"></i> Профили пользователей</a>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/profile/');?>" ><i class="fas fa-user" ></i> Профили пользователей</a>
 					<?
 					}
 					?>
@@ -156,7 +156,7 @@ $this->Azbn7
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.role.all.access')) {
 					?>
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/role/');?>" ><i class="fa fa-universal-access" aria-hidden="true"></i> Роли</a>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/role/');?>" ><i class="fab fa-connectdevelop" ></i> Роли</a>
 					<?
 					}
 					?>
@@ -164,7 +164,7 @@ $this->Azbn7
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.right.all.access')) {
 					?>
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/right/');?>" ><i class="fa fa-universal-access" aria-hidden="true"></i> Права пользователей</a>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/right/');?>" ><i class="fas fa-universal-access" ></i> Права пользователей</a>
 					<?
 					}
 					?>
@@ -175,7 +175,7 @@ $this->Azbn7
 			</li>
 			
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-sliders" aria-hidden="true"></i> Параметры</a>
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sliders-h" ></i> Параметры</a>
 				<div class="dropdown-menu">
 					
 					
@@ -183,7 +183,7 @@ $this->Azbn7
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.log.all.access')) {
 					?>
 					
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/log/');?>" ><i class="fa fa-history" aria-hidden="true"></i> Логи</a>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/log/');?>" ><i class="fas fa-history" ></i> Логи</a>
 					<?
 					}
 					?>
@@ -192,7 +192,7 @@ $this->Azbn7
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.alias.all.access')) {
 					?>
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/alias/');?>" ><i class="fa fa-random" aria-hidden="true"></i> Синонимы</a>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/alias/');?>" ><i class="fas fa-random" ></i> Синонимы</a>
 					<?
 					}
 					?>
@@ -200,7 +200,7 @@ $this->Azbn7
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.state.all.access')) {
 					?>
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/state/');?>" ><i class="fa fa-check-circle" aria-hidden="true"></i> Состояния</a>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/state/');?>" ><i class="fas fa-check-circle" ></i> Состояния</a>
 					<?
 					}
 					?>
@@ -208,7 +208,7 @@ $this->Azbn7
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.entity_type.all.access')) {
 					?>
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/entity_type/');?>" ><i class="fa fa-folder-open" aria-hidden="true"></i> Типы данных</a>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/entity_type/');?>" ><i class="fas fa-folder-open" ></i> Типы данных</a>
 					<?
 					}
 					?>
@@ -216,7 +216,7 @@ $this->Azbn7
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.sysopt.all.access')) {
 					?>
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/sysopt/');?>" ><i class="fa fa-cogs" aria-hidden="true"></i> Настройки CMS</a>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/sysopt/');?>" ><i class="fas fa-cogs" ></i> Настройки CMS</a>
 					<?
 					}
 					?>
@@ -258,7 +258,7 @@ $this->Azbn7
 		<ul class="nav navbar-nav nav-inline">
 			
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus" aria-hidden="true"></i> Создать</a>
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-plus" ></i> Создать</a>
 				<div class="dropdown-menu">
 					<?
 					$types = $this->Azbn7->mdl('DB')->read('entity_type', "fill = '1'");
@@ -278,7 +278,7 @@ $this->Azbn7
 			</li>
 			
 			<li class="nav-item">
-				<a class="nav-link " href="<?=$this->Azbn7->mdl('Site')->url('/admin/logout/');?>" ><i class="fa fa-user-times" aria-hidden="true"></i> Выйти</a>
+				<a class="nav-link " href="<?=$this->Azbn7->mdl('Site')->url('/admin/logout/');?>" ><i class="fas fa-user-times" ></i> Выйти</a>
 			</li>
 			
 		</ul>

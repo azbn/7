@@ -8,7 +8,7 @@
 	Логи сайта
 	
 	<div class="float-sm-right item-base-functions" >
-		<a class="azbn-flt-block-btn" href="#" title="Фильтр логов" data-flt-block=".azbn-flt-block" ><i class="fa fa-filter" aria-hidden="true"></i></a>
+		<a class="azbn-flt-block-btn" href="#" title="Фильтр логов" data-flt-block=".azbn-flt-block" ><i class="fas fa-filter" ></i></a>
 	</div>
 	
 </h2>
@@ -131,7 +131,7 @@ if(count($param['items'])) {
 					<?
 					if($v['entity'] > 0) {
 					?>
-					<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity/' . $v['entity'] . '/');?>" ><i class="fa fa-pencil-square-o" aria-hidden="true" title="Редактировать запись" ></i></a>
+					<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity/' . $v['entity'] . '/');?>" ><i class="fas fa-pen-square" title="Редактировать запись" ></i></a>
 					<?
 					}
 					?>

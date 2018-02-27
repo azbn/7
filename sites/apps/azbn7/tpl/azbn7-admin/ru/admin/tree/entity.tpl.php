@@ -17,12 +17,12 @@ if(count($users)) {
 	
 	<div class="float-sm-right item-base-functions" >
 		
-		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/entity/?type=' . $param['type']['id']);?>" title="В виде списка" ><i class="fa fa-list" aria-hidden="true"></i></a>
+		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/entity/?type=' . $param['type']['id']);?>" title="В виде списка" ><i class="fas fa-bars" ></i></a>
 		
 		<?
 		if($param['type']['fill']) {
 		?>
-		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/add/entity/?type=' . $param['type']['id']);?>" title="Создать запись" ><i class="fa fa-plus-circle" aria-hidden="true" ></i></a>
+		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/add/entity/?type=' . $param['type']['id']);?>" title="Создать запись" ><i class="fas fa-plus-circle" ></i></a>
 		<?
 		}
 		?>

@@ -22,12 +22,12 @@ $func = function(&$catalog, $item_id, $tab = '') use (&$func) {//$tab = "&nbsp; 
 			<?
 			if($catalog['items'][$item_id]['fill']) {
 			?>
-			<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/add/entity/?type=' . $catalog['items'][$item_id]['id']);?>" title="Добавить запись данного типа" ><i class="fa fa-plus" aria-hidden="true"></i></a>
+			<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/add/entity/?type=' . $catalog['items'][$item_id]['id']);?>" title="Добавить запись данного типа" ><i class="fas fa-plus-circle" ></i></a>
 			<?
 			}
 			?>
 			
-			<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity_type/' . $catalog['items'][$item_id]['id'] . '/');?>" title="Редактировать настройки типа" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+			<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity_type/' . $catalog['items'][$item_id]['id'] . '/');?>" title="Редактировать настройки типа" ><i class="fas fa-pen-square" ></i></a>
 		</div>
 		<?=$tab.$catalog['items'][$item_id]['title'];?>
 	<?

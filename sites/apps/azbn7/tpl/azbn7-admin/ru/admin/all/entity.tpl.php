@@ -17,14 +17,14 @@ if(count($users)) {
 	
 	<div class="float-sm-right item-base-functions" >
 		
-		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/tree/entity/?type=' . $param['type']['id']);?>" title="В виде дерева" ><i class="fa fa-sitemap" aria-hidden="true"></i></a>
+		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/tree/entity/?type=' . $param['type']['id']);?>" title="В виде дерева" ><i class="fas fa-sitemap" ></i></a>
 		
-		<a class="azbn-flt-block-btn" href="#" title="Фильтр записей" data-flt-block=".azbn-flt-block" ><i class="fa fa-filter" aria-hidden="true"></i></a>
+		<a class="azbn-flt-block-btn" href="#" title="Фильтр записей" data-flt-block=".azbn-flt-block" ><i class="fas fa-filter" ></i></a>
 		
 		<?
 		if($param['type']['fill']) {
 		?>
-		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/add/entity/?type=' . $param['type']['id']);?>" title="Создать запись" ><i class="fa fa-plus-circle" aria-hidden="true" ></i></a>
+		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/add/entity/?type=' . $param['type']['id']);?>" title="Создать запись" ><i class="fas fa-plus-circle" ></i></a>
 		<?
 		}
 		?>
@@ -172,12 +172,12 @@ if(count($param['items'])) {
 						break;
 						
 						case 5:{
-							echo '<i class="fa fa-eye-slash" aria-hidden="true" title="Частично отображается" ></i>';
+							echo '<i class="fas fa-eye-slash" title="Частично отображается" ></i>';
 						}
 						break;
 						
 						case 10:{
-							echo '<i class="fa fa-eye" aria-hidden="true" title="Отображается на сайте" ></i>';
+							echo '<i class="fas fa-eye" title="Отображается на сайте" ></i>';
 						}
 						break;
 						
@@ -212,7 +212,7 @@ if(count($param['items'])) {
 				</td>
 				<td class="at-center item-edit-functions" >
 					
-					<a href="<?=$this->Azbn7->mdl('Site')->url('/' . $v['url'] . '/');?>" target="_blank" title="Открыть на сайте" ><i class="fa fa-link" aria-hidden="true"></i></a>
+					<a href="<?=$this->Azbn7->mdl('Site')->url('/' . $v['url'] . '/');?>" target="_blank" title="Открыть на сайте" ><i class="fas fa-link" ></i></a>
 					
 					<?
 					//if($this->Azbn7->mdl('Session')->hasRight('user', 'site.entity.lock')) {
@@ -220,7 +220,7 @@ if(count($param['items'])) {
 						
 						if($this->Azbn7->mdl('Session')->hasRight('user', 'site.entity.lock')) {
 						?>
-						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/lock/entity/' . $v['id'] . '/?action=unlock');?>" title="Разблокировать запись" ><i class="fa fa-unlock-alt" aria-hidden="true"></i></a>
+						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/lock/entity/' . $v['id'] . '/?action=unlock');?>" title="Разблокировать запись" ><i class="fas fa-unlock" ></i></a>
 						<?
 						}
 						
@@ -228,31 +228,31 @@ if(count($param['items'])) {
 						
 						if($this->Azbn7->mdl('Session')->hasRight('user', 'site.entity.lock')) {
 						?>
-						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/lock/entity/' . $v['id'] . '/?action=lock');?>" title="Заблокировать запись от изменений" ><i class="fa fa-lock" aria-hidden="true"></i></a>
+						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/lock/entity/' . $v['id'] . '/?action=lock');?>" title="Заблокировать запись от изменений" ><i class="fas fa-lock" ></i></a>
 						<?
 						}
 						
 						if($this->Azbn7->mdl('Session')->hasRight('user', 'site.entity_seo.access')) {
 						?>
-						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity_seo/' . $v['id'] . '/');?>" title="SEO-настройки и продвижение" ><i class="fa fa-google" aria-hidden="true"></i></a>
+						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity_seo/' . $v['id'] . '/');?>" title="SEO-настройки и продвижение" ><i class="fab fa-google" ></i></a>
 						<?
 						}
 						
 						if($this->Azbn7->mdl('Session')->hasRight('user', 'site.entity.not_author.update') || $this->Azbn7->mdl('Site')->is('user') == $v['user']) {
 						?>
-						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity/' . $v['id'] . '/');?>" title="Редактировать" ><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity/' . $v['id'] . '/');?>" title="Редактировать" ><i class="fas fa-pen-square" ></i></a>
 						<?
 						}
 						
 						if($param['type']['fill'] && $this->Azbn7->mdl('Session')->hasRight('user', 'site.entity.copy')) {
 						?>
-						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/copy/entity/' . $v['id'] . '/');?>" title="Скопировать запись" ><i class="fa fa-files-o" aria-hidden="true"></i></a>
+						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/copy/entity/' . $v['id'] . '/');?>" title="Скопировать запись" ><i class="fas fa-copy" ></i></a>
 						<?
 						}
 						
 						if($this->Azbn7->mdl('Session')->hasRight('user', 'site.entity.not_author.delete') || $this->Azbn7->mdl('Site')->is('user') == $v['user']) {
 						?>
-						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/delete/entity/' . $v['id'] . '/');?>" class="delete-confirm " title="Удалить" ><i class="fa fa-times" aria-hidden="true" ></i></a>
+						<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/delete/entity/' . $v['id'] . '/');?>" class="delete-confirm " title="Удалить" ><i class="fas fa-times" ></i></a>
 						<?
 						}
 						

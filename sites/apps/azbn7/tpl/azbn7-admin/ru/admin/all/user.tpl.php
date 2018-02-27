@@ -8,7 +8,7 @@
 	Администраторы
 	
 	<div class="float-sm-right item-base-functions" >
-		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/add/user/');?>" ><i class="fa fa-plus-circle" aria-hidden="true" title="Создать запись" ></i></a>
+		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/add/user/');?>" ><i class="fas fa-plus-circle" title="Создать запись" ></i></a>
 	</div>
 	
 </h2>
@@ -40,8 +40,8 @@ if(count($param['items'])) {
 				<td><?=$v['login'];?></td>
 				<td><?=$v['email'];?></td>
 				<td class="item-edit-functions" >
-					<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/user/' . $v['id'] . '/');?>" ><i class="fa fa-pencil-square-o" aria-hidden="true" title="Редактировать" ></i></a>
-					<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/delete/user/' . $v['id'] . '/');?>" class="delete-confirm " ><i class="fa fa-times" aria-hidden="true" title="Удалить" ></i></a>
+					<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/user/' . $v['id'] . '/');?>" ><i class="fas fa-pen-square" title="Редактировать" ></i></a>
+					<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/delete/user/' . $v['id'] . '/');?>" class="delete-confirm " ><i class="fas fa-times" title="Удалить" ></i></a>
 				</td>
 			</tr>
 		

@@ -230,7 +230,8 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="<?=$this->Azbn7->mdl('Site')->url('/var/static/azbn7/css/azbn7-admin.css');?>" />
-<link rel="stylesheet" href="<?=$this->Azbn7->mdl('Site')->url('/var/static/azbn7/css/font-awesome/css/font-awesome.min.css');?>" />
+<!--<link rel="stylesheet" href="<?=$this->Azbn7->mdl('Site')->url('/var/static/azbn7/css/font-awesome/css/font-awesome.min.css');?>" />-->
+<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 
 
 <script src="<?=$this->Azbn7->mdl('Site')->url('/var/static/azbn7/js/jquery-plugin/Azbn7_AjaxUploader.js');?>" ></script>

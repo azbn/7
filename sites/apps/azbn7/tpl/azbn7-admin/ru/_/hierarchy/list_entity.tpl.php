@@ -22,7 +22,7 @@ $func = function(&$catalog, $item_id, $tab = '') use (&$func) {//$tab = "&nbsp; 
 	<li data-entity-id="<?=$entity['entity']['id'];?>" data-entity-pos="<?=$entity['entity']['pos'];?>" >
 		
 		<input type="checkbox" class="azbn-entity-all-mass-cb" value="<?=$entity['entity']['id'];?>" />
-		<span class="drag-handle" ><i class="fa fa-arrows onhover-opacity" aria-hidden="true"></i> <?=$entity['item']['title'];?></span>
+		<span class="drag-handle" ><i class="fas fa-arrows-alt onhover-opacity" ></i> <?=$entity['item']['title'];?></span>
 		
 		<ul class="hierarchy-draggable " data-uniq="<?=$this->Azbn7->randstr(16);?>" >
 		<?

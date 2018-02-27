@@ -17,7 +17,7 @@ $param['route'] = $this->Azbn7->mdl('Entity')->getRoute($param);
 				
 			} else {
 			?>
-			<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/lock/entity/' . $param['entity']['id'] . '/?action=lock');?>" title="Заблокировать запись от изменений" ><i class="fa fa-lock" aria-hidden="true"></i></a>
+			<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/lock/entity/' . $param['entity']['id'] . '/?action=lock');?>" title="Заблокировать запись от изменений" ><i class="fas fa-lock" ></i></a>
 			<?
 			}
 		}
@@ -27,7 +27,7 @@ $param['route'] = $this->Azbn7->mdl('Entity')->getRoute($param);
 		<?
 		if($this->Azbn7->mdl('Session')->hasRight('user', 'site.entity.type.' . $param['type']['uid'] . '.access') && $param['type']['fill']) {
 		?>
-		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/entity/?type=' . $param['type']['id']);?>" title="Все записи данного типа" ><i class="fa fa-list-ul" aria-hidden="true"></i></a>
+		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/entity/?type=' . $param['type']['id']);?>" title="Все записи данного типа" ><i class="fas fa-bars" ></i></a>
 		<?
 		}
 		?>
@@ -35,7 +35,7 @@ $param['route'] = $this->Azbn7->mdl('Entity')->getRoute($param);
 		<?
 		if($param['type']['fill']) {
 		?>
-		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/add/entity/?type=' . $param['type']['id']);?>" title="Создать другую запись" ><i class="fa fa-plus-circle" aria-hidden="true" ></i></a>
+		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/add/entity/?type=' . $param['type']['id']);?>" title="Создать другую запись" ><i class="fas fa-plus-circle" ></i></a>
 		<?
 		}
 		?>
@@ -43,7 +43,7 @@ $param['route'] = $this->Azbn7->mdl('Entity')->getRoute($param);
 		<?
 		if($param['type']['fill'] && $this->Azbn7->mdl('Session')->hasRight('user', 'site.entity.copy')) {
 		?>
-		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/copy/entity/' . $param['entity']['id'] . '/');?>" title="Скопировать запись" ><i class="fa fa-files-o" aria-hidden="true"></i></a>
+		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/copy/entity/' . $param['entity']['id'] . '/');?>" title="Скопировать запись" ><i class="fas fa-copy" ></i></a>
 		<?
 		}
 		?>
@@ -51,12 +51,12 @@ $param['route'] = $this->Azbn7->mdl('Entity')->getRoute($param);
 		<?
 		if($this->Azbn7->mdl('Session')->hasRight('user', 'site.entity_seo.access')) {
 		?>
-		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity_seo/' . $param['entity']['id'] . '/');?>" title="SEO-настройки и продвижение" ><i class="fa fa-google" aria-hidden="true"></i></a>
+		<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity_seo/' . $param['entity']['id'] . '/');?>" title="SEO-настройки и продвижение" ><i class="fab fa-google" ></i></a>
 		<?
 		}
 		?>
 		
-		<a href="<?=$this->Azbn7->mdl('Site')->url('/' . $param['entity']['url'] . '/');?>" target="_blank" title="Открыть запись на сайте" ><i class="fa fa-link" aria-hidden="true"></i></a>
+		<a href="<?=$this->Azbn7->mdl('Site')->url('/' . $param['entity']['url'] . '/');?>" target="_blank" title="Открыть запись на сайте" ><i class="fas fa-link" ></i></a>
 		
 	</div>
 	

@@ -18,7 +18,7 @@
 	<div class="checked-list image-cont">
 		
 		<!--
-		<a class="variant" draggable="true" href="#1" data-entity="1" style="background-image:url(https://lh3.googleusercontent.com/-_qRK4aqaT-8/UUpxL_bV-yI/AAAAAAAAAAM/T3h5a2g20Js/s320/Full_HD_yeil_doa_manzaras.jpg);" ><i class="fa fa-times" aria-hidden="true"></i></a>
+		<a class="variant" draggable="true" href="#1" data-entity="1" style="background-image:url(https://lh3.googleusercontent.com/-_qRK4aqaT-8/UUpxL_bV-yI/AAAAAAAAAAM/T3h5a2g20Js/s320/Full_HD_yeil_doa_manzaras.jpg);" ><i class="fas fa-times" aria-hidden="true"></i></a>
 		<a class="variant" draggable="true" href="#1" data-entity="2" style="background-image:url(https://lh3.googleusercontent.com/-_qRK4aqaT-8/UUpxL_bV-yI/AAAAAAAAAAM/T3h5a2g20Js/s320/Full_HD_yeil_doa_manzaras.jpg);" >2</a>
 		<a class="variant" draggable="true" href="#1" data-entity="3" style="background-image:url(https://lh3.googleusercontent.com/-_qRK4aqaT-8/UUpxL_bV-yI/AAAAAAAAAAM/T3h5a2g20Js/s320/Full_HD_yeil_doa_manzaras.jpg);" >3</a>
 		<a class="variant" draggable="true" href="#1" data-entity="4" style="background-image:url(https://lh3.googleusercontent.com/-_qRK4aqaT-8/UUpxL_bV-yI/AAAAAAAAAAM/T3h5a2g20Js/s320/Full_HD_yeil_doa_manzaras.jpg);" >4</a>
@@ -26,8 +26,8 @@
 		<a class="variant" draggable="true" href="#1" data-entity="6" style="background-image:url(https://lh3.googleusercontent.com/-_qRK4aqaT-8/UUpxL_bV-yI/AAAAAAAAAAM/T3h5a2g20Js/s320/Full_HD_yeil_doa_manzaras.jpg);" >6</a>
 		-->
 		
-		<a class="append-variant-item" href="#1" ><i class="fa fa-search-plus" aria-hidden="true"></i></a>
-		<a class="upload-variant-item" href="#1" ><i class="fa fa-upload" aria-hidden="true"></i></a>
+		<a class="append-variant-item" href="#1" ><i class="fas fa-search-plus" ></i></a>
+		<a class="upload-variant-item" href="#1" ><i class="fas fa-upload" ></i></a>
 		
 	</div>
 	

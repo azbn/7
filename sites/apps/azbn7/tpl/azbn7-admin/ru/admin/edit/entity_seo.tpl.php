@@ -4,7 +4,7 @@
 
 <h2 class="mt-2 mb-1" >
 	
-	<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity/' . $param['entity']['entity']['id'] . '/');?>" title="Вернуться к редактированию записи" ><i class="fa fa-reply" aria-hidden="true"></i></a>
+	<a href="<?=$this->Azbn7->mdl('Site')->url('/admin/edit/entity/' . $param['entity']['entity']['id'] . '/');?>" title="Вернуться к редактированию записи" ><i class="fas fa-reply" ></i></a>
 	
 	SEO-настройки записи <?=$param['entity']['item']['title'];?>
 	
