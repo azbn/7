@@ -216,4 +216,30 @@ class BP
 		
 	}
 	
+	public function createStageChildren($stage = array(), $data = array(
+		'input' => array(),
+		'output' => array(),
+		'param' => array(),
+	))
+	{
+		
+		$bps = $this->Azbn7->mdl('DB')->read('bp', "`parent` = '{$stage['bp']}'");
+		
+		if(count($bps)) {
+			foreach($bps as $bp) {
+				
+				$this->createStage(array(
+					'parent' => $stage['id'],
+					'bp' => $bp['id'],
+					'stream' => $stage['stream'],
+					'input' => $this->Azbn7->getJSON($data['input']),
+					'output' => $this->Azbn7->getJSON($data['output']),
+					'param' => $this->Azbn7->getJSON($data['param']),
+				));
+				
+			}
+		}
+		
+	}
+	
 }

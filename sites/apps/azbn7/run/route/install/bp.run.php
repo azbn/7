@@ -67,6 +67,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp.item.update', 'title' => 'Изменение бизнес-процессов'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp.item.delete', 'title' => 'Удаление бизнес-процессов'));
 	
+	/*
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp_stream.all.access', 'title' => 'Доступ к потокам бизнес-процессов'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp_stream.item.create', 'title' => 'Добавление потоков бизнес-процессов'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp_stream.item.update', 'title' => 'Изменение потоков бизнес-процессов'));
@@ -76,7 +77,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp_stage.item.create', 'title' => 'Добавление стадий бизнес-процессов'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp_stage.item.update', 'title' => 'Изменение стадий бизнес-процессов'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp_stage.item.delete', 'title' => 'Удаление стадий бизнес-процессов'));
-	
+	*/
 	
 	$this->Azbn7->mdl('DB')->create('bp', array(
 		/*

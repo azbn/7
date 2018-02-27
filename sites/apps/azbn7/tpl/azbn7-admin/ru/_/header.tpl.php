@@ -174,6 +174,23 @@ $this->Azbn7
 				</div>
 			</li>
 			
+			<?
+			if($this->Azbn7->mdl('Session')->hasRight('user', 'site.bp.all.access')) {
+			?>
+			
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tasks" ></i> Процессы</a>
+				<div class="dropdown-menu">
+					
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/bp/');?>" ><i class="fas fa-spinner"></i> Бизнес-процессы</a>
+					
+				</div>
+			</li>
+			
+			<?
+			}
+			?>
+			
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sliders-h" ></i> Параметры</a>
 				<div class="dropdown-menu">

@@ -117,6 +117,7 @@ $param['route'] = $this->Azbn7->mdl('Entity')->getRoute($param);
 			<div class="spacer" data-space="20" ></div>
 			
 			<?
+			/*
 			$this->Azbn7->mdl('Viewer')->tpl('_/editor/input', array(
 				'title' => 'Код обработчик (без .run.php)',
 				'html' => ' id="" ',
@@ -124,6 +125,17 @@ $param['route'] = $this->Azbn7->mdl('Entity')->getRoute($param);
 				'value' => $param['route']['run']['path'],
 				//'path' => 'entity',
 			));
+			*/
+			
+			$this->Azbn7->mdl('Viewer')->tpl('_/hierarchy/select_run_file', array(
+				'title' => 'Код-обработчик',
+				'html' => ' id="" ',
+				'name' => 'route[run][path]',
+				'value' => $param['route']['run']['path'],
+				'path' => '/../../../../../run/route'
+				//'path' => 'entity',
+			));
+			
 			?>
 			
 			<div class="spacer" data-space="20" ></div>

@@ -10,6 +10,13 @@ if(is_array($param['data']['input']) && is_array($param['data']['process'])) {
 			
 			$this->Azbn7->mdl('BP')->stageSetCompletedAt($param['stage']);
 			
+			$this->Azbn7->mdl('BP')->createStageChildren($param['stage'], array(
+				'input' => array(),
+				'output' => array(),
+				'param' => array(),
+			));
+			
+			/*
 			$this->Azbn7->mdl('BP')->createStage(array(
 				'parent' => $param['stage']['id'],
 				'bp' => $param['stage']['bp'],
@@ -24,6 +31,8 @@ if(is_array($param['data']['input']) && is_array($param['data']['process'])) {
 					
 				)),
 			));
+			*/
+			
 			
 			//$this->Azbn7->mdl('Viewer')->echo_dev($param, true);
 			

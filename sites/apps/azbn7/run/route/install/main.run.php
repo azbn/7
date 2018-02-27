@@ -358,6 +358,28 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 		)),
 	));
 	
+	$roles[] = $this->Azbn7->mdl('DB')->create('role', array(
+		'uid' => 'seo',
+		'title' => 'SEO-специалист',
+		'right' => $this->Azbn7->getJSON(array(
+			'site.admin.login' => 1,
+		)),
+		'param' => $this->Azbn7->getJSON(array(
+			
+		)),
+	));
+	
+	$roles[] = $this->Azbn7->mdl('DB')->create('role', array(
+		'uid' => 'manager',
+		'title' => 'Менеджер',
+		'right' => $this->Azbn7->getJSON(array(
+			'site.admin.login' => 1,
+		)),
+		'param' => $this->Azbn7->getJSON(array(
+			
+		)),
+	));
+	
 	$e = array();
 	$b = array();
 	
