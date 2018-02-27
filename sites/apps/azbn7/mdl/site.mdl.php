@@ -288,4 +288,9 @@ class Site
 		return $res_arr;
 	}
 	
+	public function genUID($str = '')
+	{
+		return $this->Azbn7->created_at . mb_strtoupper($this->Azbn7->mdl('Session')->getPassHash($this->Azbn7->randstr(32), $str, $this->Azbn7->randstr(16)), $this->Azbn7->config['charset']);
+	}
+	
 }

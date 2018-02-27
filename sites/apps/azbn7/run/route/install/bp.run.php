@@ -20,6 +20,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 		
 		->exec("CREATE TABLE IF NOT EXISTS `" . $this->Azbn7->mdl('DB')->t['bp'] . "` (
 				`id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				`parent` BIGINT DEFAULT '0',
 				`uid` VARCHAR(255) NOT NULL UNIQUE,
 				`title` VARCHAR(255) DEFAULT '',
 				`criterion_input` VARCHAR(255) DEFAULT '',
@@ -34,6 +35,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 				`id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				`created_at` BIGINT DEFAULT '0',
 				`completed_at` BIGINT DEFAULT '0',
+				`parent` BIGINT DEFAULT '0',
 				`uid` VARCHAR(255) NOT NULL UNIQUE,
 				`title` VARCHAR(255) DEFAULT '',
 				`param` MEDIUMBLOB DEFAULT NULL,
@@ -43,6 +45,8 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 		
 		->exec("CREATE TABLE IF NOT EXISTS `" . $this->Azbn7->mdl('DB')->t['bp_stage'] . "` (
 				`id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				`in_process` INT DEFAULT '0',
+				`parent` BIGINT DEFAULT '0',
 				`bp` BIGINT DEFAULT '0',
 				`stream` BIGINT DEFAULT '0',
 				`created_at` BIGINT DEFAULT '0',
@@ -79,6 +83,7 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 		'created_at' =>$this->Azbn7->created_at,
 		'completed_at' => 0,
 		*/
+		'parent' => 0,
 		'uid' => 'default',
 		'title' => 'Бизнес-процесс по-умолчанию',
 		'criterion_input' => 'default',

@@ -156,7 +156,7 @@ $this->Azbn7
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.role.all.access')) {
 					?>
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/role/');?>" ><i class="fab fa-connectdevelop" ></i> Роли</a>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/role/');?>" ><i class="fas fa-users" ></i> Роли</a>
 					<?
 					}
 					?>
