@@ -14,13 +14,13 @@
 </h2>
 
 <div class="row azbn-flt-block mt-3 mb-3" >
-	<div class="col-xs-12" >
+	<div class="col-sm-12" >
 		
 		<form>
 			
 			<div class="row " >
 				
-				<div class="col-xs-2" >
+				<div class="col-sm-2" >
 					<div class="form-group">
 						<label >Администратор</label>
 						<select class="form-control " name="flt[user]" >
@@ -39,7 +39,7 @@
 					</div>
 				</div>
 				
-				<div class="col-xs-2" >
+				<div class="col-sm-2" >
 					<div class="form-group">
 						<label >Профиль</label>
 						<select class="form-control " name="flt[profile]" >
@@ -58,16 +58,16 @@
 					</div>
 				</div>
 				
-				<div class="col-xs-4" >
+				<div class="col-sm-4" >
 					<div class="form-group">
 						
 						<div class="row " >
-							<div class="col-xs-12 col-sm-6" >
+							<div class="col-sm-6" >
 								<label >Дата записи между</label>
 								<input type="text" class="form-control datepicker " name="flt[created_at][start]" value="<?=isset($_GET['flt']['created_at']['start']) ? $this->Azbn7->c_s($_GET['flt']['created_at']['start']) : '';?>" placeholder="Начало" />
 							</div>
 							
-							<div class="col-xs-12 col-sm-6" >
+							<div class="col-sm-6" >
 								<label >&nbsp;</label>
 								<input type="text" class="form-control datepicker " name="flt[created_at][stop]" value="<?=isset($_GET['flt']['created_at']['stop']) ? $this->Azbn7->c_s($_GET['flt']['created_at']['stop']) : '';?>" placeholder="Окончание" />
 							</div>
@@ -76,7 +76,7 @@
 					</div>
 				</div>
 				
-				<div class="col-xs-2" >
+				<div class="col-sm-2" >
 					<div class="form-group">
 						<label >&nbsp;</label>
 						<input type="submit" class="btn btn-block btn-info" value="Отфильтровать" />

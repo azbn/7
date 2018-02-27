@@ -154,20 +154,12 @@ $this->Azbn7
 					?>
 					
 					<?
-					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.log.all.access')) {
+					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.role.all.access')) {
 					?>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/log/');?>" ><i class="fa fa-history" aria-hidden="true"></i> Логи</a>
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/role/');?>" ><i class="fa fa-universal-access" aria-hidden="true"></i> Роли</a>
 					<?
 					}
 					?>
-					
-				</div>
-			</li>
-			
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-sliders" aria-hidden="true"></i> Параметры</a>
-				<div class="dropdown-menu">
 					
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.right.all.access')) {
@@ -177,13 +169,25 @@ $this->Azbn7
 					}
 					?>
 					
+					<!-- <div class="dropdown-divider"></div> -->
+					
+				</div>
+			</li>
+			
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-sliders" aria-hidden="true"></i> Параметры</a>
+				<div class="dropdown-menu">
+					
+					
 					<?
-					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.role.all.access')) {
+					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.log.all.access')) {
 					?>
-					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/role/');?>" ><i class="fa fa-universal-access" aria-hidden="true"></i> Роли</a>
+					
+					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/log/');?>" ><i class="fa fa-history" aria-hidden="true"></i> Логи</a>
 					<?
 					}
 					?>
+					
 					
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.alias.all.access')) {
@@ -212,7 +216,6 @@ $this->Azbn7
 					<?
 					if($this->Azbn7->mdl('Session')->hasRight('user', 'site.sysopt.all.access')) {
 					?>
-					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="<?=$this->Azbn7->mdl('Site')->url('/admin/all/sysopt/');?>" ><i class="fa fa-cogs" aria-hidden="true"></i> Настройки CMS</a>
 					<?
 					}

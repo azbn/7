@@ -26,7 +26,7 @@
 				
 				<div class="row" >
 					
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+					<div class="col-sm-12 col-md-12 col-lg-12" >
 						
 						<p><a class="upload-on-click-btn" href="#upload-on-click" >Выберите</a> файлы для загрузки или перетащите их на поле загрузки ниже</p>
 						<p>Загруженные файлы будут проанализированы и добавлены в соответствующие разделы.</p>
@@ -59,7 +59,7 @@
 				
 				<div class="row" >
 					
-					<div class="col-xs-12 col-sm-12 col-md-7 col-lg-8" >
+					<div class="col-sm-12 col-md-7 col-lg-8" >
 						
 						<form class=" " action="<?=$this->Azbn7->mdl('Site')->url('/admin/search/');?>" >
 							<div class="form-group">
@@ -78,7 +78,7 @@
 						
 					</div>
 					
-					<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4" >
+					<div class="col-sm-12 col-md-5 col-lg-4" >
 						
 						<div class=" " >
 							<div class="form-group " >
@@ -122,7 +122,7 @@
 				<form action="<?=$this->Azbn7->mdl('Site')->url('/admin/create/entity_type/');?>" method="POST" >
 					
 					<div class="form-group row pb-1">
-						<div class="col-xs-12 " >
+						<div class="col-sm-12 " >
 					<?
 					$entity_type = $this->Azbn7->mdl('DB')->read('entity_type');
 					$entity_type_h = $this->Azbn7->mdl('Site')->buildHierarchy($entity_type);
@@ -138,14 +138,14 @@
 					</div>
 					
 					<div class="form-group row pb-1">
-						<div class="col-xs-12 " >
+						<div class="col-sm-12 " >
 							<label>Строка, определяющая название типа (латинск.)</label>
 							<input type="text" class="form-control " name="item[uid]" value="" placeholder="Уникальный ID" />
 						</div>
 					</div>
 					
 					<div class="form-group row pb-1">
-						<div class="col-xs-12 " >
+						<div class="col-sm-12 " >
 							<label>Название (или описание) типа (рус.)</label>
 							<input type="text" class="form-control " name="item[title]" value="" placeholder="Название (пояснение)" />
 						</div>
@@ -154,17 +154,17 @@
 					<div class="field-list pb-1" >
 						
 						<div class="field-item row " >
-							<div class="col-xs-4" >
+							<div class="col-sm-4" >
 								<div class="form-group">
 									<input type="" class="form-control " name="item[param][field][0][uid]" value="" placeholder="Название поля" />
 								</div>
 							</div>
-							<div class="col-xs-4" >
+							<div class="col-sm-4" >
 								<div class="form-group">
 									<input type="" class="form-control " name="item[param][field][0][type]" value="" placeholder="Тип поля (MySQL)" />
 								</div>
 							</div>
-							<div class="col-xs-4" >
+							<div class="col-sm-4" >
 								<div class="form-group">
 									<input type="" class="form-control " name="item[param][field][0][editor]" value="" placeholder="Редактировать через" />
 								</div>
