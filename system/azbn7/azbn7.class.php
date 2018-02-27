@@ -54,7 +54,7 @@ namespace azbn7 {
 		public function getTiming($m = 0)
 		{
 			if($m == 0) {
-				$m = $this->$this->getMicroTime();
+				$m = $this->getMicroTime();
 			}
 			
 			return ($m - $this->timing['start']);
