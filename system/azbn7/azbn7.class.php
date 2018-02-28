@@ -45,6 +45,16 @@ namespace azbn7 {
 			
 		}
 		
+		public function __call($_name, $_param)
+		{
+			/*
+			if(!is_array($_param)) {
+				
+			}
+			*/
+			return $this;
+		}
+		
 		public function echo_dev($str = '', $src = '')
 		{
 			if($this->config['debug']) {
