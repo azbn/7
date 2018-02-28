@@ -6,11 +6,9 @@
 $c_res = $this->Azbn7->mdl('Cli')->cli_process(array(
 	'app' => (AZBN7__IS_WIN ? 'dir' : 'ls -la'),
 	'param' => array(
-		/*
-		'input=',
-		'output=',
-		'data=' . base64_encode($this->Azbn7->getJSON($param)),
-		*/
+		//'input=',
+		//'output=',
+		//'data=' . base64_encode($this->Azbn7->getJSON($param)),
 	),
 ));
 

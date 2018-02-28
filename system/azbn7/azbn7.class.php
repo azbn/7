@@ -11,6 +11,7 @@ namespace azbn7 {
 		public $__events = array();
 		public $__errors = array();
 		public $__modules = array();
+		public $__modules_dirs = array();
 		public $version = array(
 			'number' => 0.2,
 			'update_at' => '201802280900',
@@ -111,6 +112,13 @@ namespace azbn7 {
 			)
 			*/
 			
+			if(!in_array($arr['dir'], $this->__modules_dirs)) {
+				//$this->__modules_dirs[] = $arr['dir'];
+				
+				array_unshift($this->__modules_dirs, $arr['dir']);
+				
+			}
+			
 			$class_name = '\\' . $arr['dir'] . '\\' . str_replace('/', '\\', $arr['mdl']);
 			
 			if(isset($this->__modules[$arr['uid']])) {
@@ -124,15 +132,7 @@ namespace azbn7 {
 				
 				require($file);
 				
-				//echo $class_name . '<br />';
-				
-				$this->__modules[$arr['uid']] = new $class_name($arr['param']);//$arr['mdl']
-				
-				/*
-				if($this->__modules[$arr['uid']]) {
-					echo $class_name . '<br />';
-				}
-				*/
+				$this->__modules[$arr['uid']] = new $class_name($arr['param']);
 				
 				$this->data['mdl'][$arr['uid']] = array();
 				
@@ -164,6 +164,48 @@ namespace azbn7 {
 				return true;
 			} else {
 				return false;
+			}
+		}
+		
+		public function dmdl($uid)
+		{
+			if($this->__modules[$uid]) {
+				
+				return $this->__modules[$uid];
+				
+			} else {
+				
+				$file = '';
+				$finded = false;
+				$i = 0;
+				
+				$__mdls_dirs = array_reverse($this->__modules_dirs);
+				
+				while(!$finded) {
+					
+					$dir = $__mdls_dirs[$i];
+					
+					$file = $this->config['path'][$dir] . '/mdl/' . strtolower($uid) . '.mdl.php';
+					
+					if(file_exists($file)) {
+						
+						$finded = true;
+						
+						$this->load(array(
+							'dir' => $dir,
+							'mdl' => $uid,
+							'uid' => $uid,
+							'param' => array()
+						));
+						
+					}
+					
+					$i++;
+					
+				}
+				
+				return $this->mdl($uid);
+				
 			}
 		}
 		
