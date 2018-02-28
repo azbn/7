@@ -225,21 +225,21 @@ class DebugExt
 	public function viewer__tpl__require__before($uid, &$p = array())
 	{
 		if($this->Azbn7->config['debug']) {
-			echo "\n" . '<!-- ---------- ' . $uid . ': ' . $p['__this_tpl']['tpl'] . ' ---------- -->' . "\n";
+			echo PHP_EOL . '<!-- ---------- ' . $uid . ': ' . $p['__this_tpl']['tpl'] . ' ---------- -->' . PHP_EOL;
 		}
 	}
 	
 	public function viewer__tpl__require__after($uid, &$p = array())
 	{
 		if($this->Azbn7->config['debug']) {
-			echo "\n" . '<!-- ---------- ' . $uid . ': ' . $p['__this_tpl']['tpl'] . ' ---------- -->' . "\n";
+			echo PHP_EOL . '<!-- ---------- ' . $uid . ': ' . $p['__this_tpl']['tpl'] . ' ---------- -->' . PHP_EOL;
 		}
 	}
 	
 	public function viewer__tpl__not_found($uid, &$p = array())
 	{
 		if($this->Azbn7->config['debug']) {
-			echo "\n" . '<!-- ---------- ' . $uid . ': ' . $p['__this_tpl']['tpl'] . ' NOT FOUND!!! ---------- -->' . "\n";
+			echo PHP_EOL . '<!-- ---------- ' . $uid . ': ' . $p['__this_tpl']['tpl'] . ' NOT FOUND!!! ---------- -->' . PHP_EOL;
 		}
 	}
 	

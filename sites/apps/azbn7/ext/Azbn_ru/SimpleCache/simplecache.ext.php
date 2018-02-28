@@ -98,7 +98,7 @@ class SimpleCache
 		
 		$html = preg_replace('!<(?:code|pre).*>[^<]+</(?:code|pre)>!', '#pre#', $html);
 		$html = preg_replace('#<!–[^\[].+–>#', '', $html);
-		$html = preg_replace('/[\r\n\t]+/', ' ', $html);
+		$html = preg_replace('/[\r' . PHP_EOL . '\t]+/', ' ', $html);
 		$html = preg_replace('/>[\s]+</', '><', $html);
 		$html = preg_replace('/[\s]+/', ' ', $html);
 		

@@ -212,7 +212,7 @@ class Cron
 		
 		$this->runTasks($p);
 		
-		$p['meta']['msg']['text'] = $p['meta']['msg']['text'] . "\n" . $uid . ' finished';
+		$p['meta']['msg']['text'] = $p['meta']['msg']['text'] . PHP_EOL . $uid . ' finished';
 		
 	}
 	

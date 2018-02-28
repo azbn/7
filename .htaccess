@@ -49,6 +49,12 @@ Redirect 301 /mainpage/ /
 #Require valid-user
 
 
+<Limit GET POST PUT DELETE>
+	Order allow,deny
+	Allow from all
+</Limit>
+
+
 <FilesMatch ".(htaccess|htpasswd|htgroup|ini|phps|fla|psd|log|sh|cache)$">
 	Order allow,deny
 	Deny from all

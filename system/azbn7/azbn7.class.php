@@ -12,8 +12,8 @@ namespace azbn7 {
 		public $__errors = array();
 		public $__modules = array();
 		public $version = array(
-			'number' => 0.1103,
-			'update_at' => '201701161426',
+			'number' => 0.2,
+			'update_at' => '201802280900',
 			'secret' => 'NemoMeImpuneLacessit',
 			'php' => 0.0,
 		);
@@ -25,10 +25,10 @@ namespace azbn7 {
 			$this->event_prefix = strtolower(str_replace('\\', '.', static::class));
 			
 			$this->config = $config;
-			$this->created_at = $this->as_num(date('U'));
+			$this->created_at = $this->now();
 			$this->data = array();
 			$this->timing['start'] = $this->getMicroTime();
-			$this->php_process_session = md5("\n" . date('U') . rand(0, 10000));
+			$this->php_process_session = md5(PHP_EOL . date('U') . rand(0, 10000));
 			
 			$version = explode('.', phpversion());
 			$this->version['php'] = $version[0] + round($version[1] / 10, 1);
@@ -47,7 +47,7 @@ namespace azbn7 {
 		public function echo_dev($str = '', $src = '')
 		{
 			if($this->config['debug']) {
-				echo "\n" . '<!-- ---------- ' . ($src != '' ? $src : $this->event_prefix) . ': ' . $str . ' ---------- -->' . "\n";
+				echo PHP_EOL . '<!-- ---------- ' . ($src != '' ? $src : $this->event_prefix) . ': ' . $str . ' ---------- -->' . PHP_EOL;
 			}
 		}
 		
@@ -95,7 +95,7 @@ namespace azbn7 {
 		public function onException($e)
 		{
 			$fp = fopen($this->config['path']['cache'] . '/exceptions.log', 'a');
-			fwrite($fp, $this->getMicroTime() . ' exc#'.$e->getCode() . ' ' . $e->getFile() . ':' . $e->getLine() . ' ' . $e->getMessage() . ' ' . $e->getTraceAsString() . "\n");
+			fwrite($fp, $this->getMicroTime() . ' exc#'.$e->getCode() . ' ' . $e->getFile() . ':' . $e->getLine() . ' ' . $e->getMessage() . ' ' . $e->getTraceAsString() . PHP_EOL);
 			fclose($fp);
 			return $this;
 		}
@@ -180,7 +180,7 @@ namespace azbn7 {
 		
 		public function hash($str, $salt1 = '', $salt2 = '')
 		{
-			return md5($salt1."\n".$salt2.$str);
+			return md5($salt1 . PHP_EOL . $salt2 . $str);
 		}
 
 		
@@ -234,28 +234,28 @@ namespace azbn7 {
 			//return htmlspecialchars((substr(trim(strtolower($email)), 0, 64)), ENT_QUOTES, $this->config['charset']);
 			return substr(filter_var($value, FILTER_SANITIZE_EMAIL), 0, 64);
 		}
-
+		
 		/*
 		Перенаправление на другой адрес
 		*/
-
+		
 		public function go2($url = '/')
 		{
 			Header('HTTP/1.1 301 Moved Permanently'); 
 			Header('Location: ' . $url);
 			return $this;
 		}
-
+		
 		/*
 		Отправка почты
 		*/
-
+		
 		public function mail2($to, $from, $subject, $body, $headers=array())
 		{
-			$headers_str = "From: $from\r\n" . "Reply-To: $from\r\n";
+			$headers_str = "From: $from\r" . PHP_EOL . "Reply-To: $from\r" . PHP_EOL;
 			if(count($headers)) {
-				foreach($headers as $param=>$value) {
-					$headers_str=$headers_str."$param: $value\r\n";
+				foreach($headers as $param => $value) {
+					$headers_str = $headers_str . "$param: $value\r" . PHP_EOL;
 				}
 			}
 			@mail($to, $subject, $body, $headers_str);
@@ -303,6 +303,11 @@ namespace azbn7 {
 			fwrite($fp, $str);
 			fclose($fp);
 			return $this;
+		}
+		
+		public function now()
+		{
+			return $this->as_num(date('U'));
 		}
 		
 		public function getMicroTime()

@@ -258,14 +258,14 @@ class Site
 		
 		if($seo['id']) {
 			
-			echo "<title>{$seo['title']}</title>\n";
-			echo "<meta name=\"description\" content=\"{$seo['description']}\" />\n";
-			echo "<meta name=\"keywords\" content=\"{$seo['keywords']}\" />\n";
+			echo "<title>{$seo['title']}</title>" . PHP_EOL;
+			echo "<meta name=\"description\" content=\"{$seo['description']}\" />" . PHP_EOL;
+			echo "<meta name=\"keywords\" content=\"{$seo['keywords']}\" />" . PHP_EOL;
 			
 		} else {
 			
-			echo "<title>{$entity['item']['title']}</title>\n";
-			echo "<meta name=\"description\" content=\"{$entity['item']['preview']}\" />\n";
+			echo "<title>{$entity['item']['title']}</title>" . PHP_EOL;
+			echo "<meta name=\"description\" content=\"{$entity['item']['preview']}\" />" . PHP_EOL;
 			
 		}
 		

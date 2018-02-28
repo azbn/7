@@ -5,9 +5,15 @@
 //$host = explode(':',$_SERVER['HTTP_HOST']);
 //require_once('sites/config/'.strtolower($host[0]).'.config.php');
 
-//определение консоли
+define('AZBN7__IS_CLI', (PHP_SAPI == 'cli') || (php_sapi_name() == 'cli') || ((!isset($_SERVER['DOCUMENT_ROOT'])) && (!isset($_SERVER['REQUEST_URI']))));
+define('AZBN7__IS_OSX', (strtoupper(substr(PHP_OS, 0, 3)) === 'DAR'));
+define('AZBN7__IS_LINUX', (strtoupper(substr(PHP_OS, 0, 5)) === 'LINUX'));
+define('AZBN7__IS_WIN', (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'));
+define('AZBN7__ROOT_DIR', dirname(__FILE__));
 
-define('IS_CLI', (PHP_SAPI == 'cli') || ((!isset($_SERVER['DOCUMENT_ROOT'])) && (!isset($_SERVER['REQUEST_URI']))));
+if(AZBN7__IS_CLI) {
+	@chdir(AZBN7__ROOT_DIR);
+}
 
 require_once('sites/config/localhost.config.php');
 
@@ -66,6 +72,12 @@ $Azbn7
 		'dir' => 'azbn7',
 		'mdl' => 'FS',
 		'uid' => 'FS',
+		'param' => array()
+	))
+	->load(array(
+		'dir' => 'app',
+		'mdl' => 'Cli',
+		'uid' => 'Cli',
 		'param' => array()
 	))
 	->load(array(
@@ -144,55 +156,93 @@ $Azbn7
 
 
 
-
-
-
-/* ---------- ext__event ---------- */
-$Azbn7
-	->mdl('Ext')
-		->event($Azbn7->mdl('Req')->event_prefix . '.parseURL.before')
-;
-/* --------- /ext__event ---------- */
-
-
-$Azbn7
-	->mdl('Req')
-		->parseURL()
-;
-
-
-/* ---------- ext__event ---------- */
-$Azbn7
-	->mdl('Ext')
-		->event($Azbn7->mdl('Req')->event_prefix . '.parseURL.after')
-;
-/* --------- /ext__event ---------- */
-
-
-
-
-
-
-/* ---------- ext__event ---------- */
-$Azbn7
-	->mdl('Ext')
-		->event($Azbn7->mdl('Req')->event_prefix . '.request.before')
-;
-/* --------- /ext__event ---------- */
-
-
-
-$Azbn7
-	->mdl('AppRouter')
-		->route($Azbn7->data['mdl']['Req']['req_url'])
-;
-
-
-/* ---------- ext__event ---------- */
-$Azbn7
-	->mdl('Ext')
-		->event($Azbn7->mdl('Req')->event_prefix . '.request.after')
-;
-/* --------- /ext__event ---------- */
-
-//var_dump($Azbn7->__events);
+if(!AZBN7__IS_CLI) {
+	
+	
+	
+	/* ---------- ext__event ---------- */
+	$Azbn7
+		->mdl('Ext')
+			->event($Azbn7->mdl('Req')->event_prefix . '.parseURL.before')
+	;
+	/* --------- /ext__event ---------- */
+	
+	
+	$Azbn7
+		->mdl('Req')
+			->parseURL()
+	;
+	
+	
+	/* ---------- ext__event ---------- */
+	$Azbn7
+		->mdl('Ext')
+			->event($Azbn7->mdl('Req')->event_prefix . '.parseURL.after')
+	;
+	/* --------- /ext__event ---------- */
+	
+	
+	
+	
+	
+	
+	/* ---------- ext__event ---------- */
+	$Azbn7
+		->mdl('Ext')
+			->event($Azbn7->mdl('Req')->event_prefix . '.request.before')
+	;
+	/* --------- /ext__event ---------- */
+	
+	
+	
+	$Azbn7
+		->mdl('AppRouter')
+			->route($Azbn7->data['mdl']['Req']['req_url'])
+	;
+	
+	
+	/* ---------- ext__event ---------- */
+	$Azbn7
+		->mdl('Ext')
+			->event($Azbn7->mdl('Req')->event_prefix . '.request.after')
+	;
+	/* --------- /ext__event ---------- */
+	
+	
+	
+	//var_dump($Azbn7->__events);
+	
+	
+	
+} else {
+	
+	
+	
+	/* ---------- ext__event ---------- */
+	$Azbn7
+		->mdl('Ext')
+			->event($Azbn7->mdl('Cli')->event_prefix . '.run.before')
+	;
+	/* --------- /ext__event ---------- */
+	
+	
+	$Azbn7
+		->mdl('Cli')
+			->run()
+	;
+	
+	
+	/* ---------- ext__event ---------- */
+	$Azbn7
+		->mdl('Ext')
+			->event($Azbn7->mdl('Cli')->event_prefix . '.run.after')
+	;
+	/* --------- /ext__event ---------- */
+	
+	
+	
+	//var_dump($Azbn7->__events);
+	
+	
+	
+}
