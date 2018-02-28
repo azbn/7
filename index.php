@@ -5,6 +5,10 @@
 //$host = explode(':',$_SERVER['HTTP_HOST']);
 //require_once('sites/config/'.strtolower($host[0]).'.config.php');
 
+//определение консоли
+
+define('IS_CLI', (PHP_SAPI == 'cli') || ((!isset($_SERVER['DOCUMENT_ROOT'])) && (!isset($_SERVER['REQUEST_URI']))));
+
 require_once('sites/config/localhost.config.php');
 
 //var_dump($CONFIG);die();
