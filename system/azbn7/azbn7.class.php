@@ -13,8 +13,8 @@ namespace azbn7 {
 		public $__modules = array();
 		public $__modules_dirs = array();
 		public $version = array(
-			'number' => 0.2,
-			'update_at' => '201802280900',
+			'number' => 0.21,
+			'updated_at' => '201803010800',
 			'secret' => 'NemoMeImpuneLacessit',
 			'php' => 0.0,
 		);
@@ -45,13 +45,8 @@ namespace azbn7 {
 			
 		}
 		
-		public function __call($_name, $_param)
+		public function __call($_name = '', $_param = array())
 		{
-			/*
-			if(!is_array($_param)) {
-				
-			}
-			*/
 			return $this;
 		}
 		
