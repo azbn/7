@@ -64,6 +64,7 @@ $CONFIG = array(
 								'profile' => $app_uid . '_profile',//профили пользователей
 								'right' => $app_uid . '_right',//права
 								
+								
 								'entity' => $app_uid . '_entity',//сущности
 								'entity_type' => $app_uid . '_entity_type',//типы сущностей
 								'entity_seo' => $app_uid . '_entity_seo',//сео-настройки сущностей
@@ -75,6 +76,7 @@ $CONFIG = array(
 								'bp' => $app_uid . '_bp',//бизнес-процессы
 								'bp_stream' => $app_uid . '_bp_stream',//потоки бизнес-процессов
 								'bp_stage' => $app_uid . '_bp_stage',//этапы бизнес-процессов
+								'bp_task' => $app_uid . '_bp_task',//задания пользователям
 								
 							),
 						),

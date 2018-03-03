@@ -76,6 +76,24 @@ class BP
 		
 	}
 	
+	public function task($item_id = 0)
+	{
+		
+		$res = null;
+		
+		$item = $this->Azbn7->mdl('DB')->one('bp_task', "`id` = '$item_id'");
+		
+		if($item['id']) {
+			$item['input'] = $this->Azbn7->parseJSON($item['input']);
+			$item['output'] = $this->Azbn7->parseJSON($item['output']);
+			$item['param'] = $this->Azbn7->parseJSON($item['param']);
+			$res = $item;
+		}
+		
+		return $res;
+		
+	}
+	
 	public function load($item_id = 0)
 	{
 		
@@ -139,6 +157,14 @@ class BP
 	{
 		$item['created_at'] = $this->Azbn7->created_at;
 		return $this->Azbn7->mdl('DB')->create('bp_stage', $item);
+	}
+	
+	public function createTask($item = array(
+		
+	))
+	{
+		$item['created_at'] = $this->Azbn7->created_at;
+		return $this->Azbn7->mdl('DB')->create('bp_task', $item);
 	}
 	
 	public function runStage($item_id = 0)
@@ -216,6 +242,17 @@ class BP
 		
 	}
 	
+	public function taskSetCompletedAt(&$task = array())
+	{
+		
+		$this->Azbn7->mdl('DB')->update('bp_task', array(
+			'completed_at' => $this->Azbn7->created_at,
+		), "`id` = '{$task['id']}'");
+		
+		$task['completed_at'] = $this->Azbn7->created_at;
+		
+	}
+	
 	public function createStageChildren($stage = array(), $data = array(
 		'input' => array(),
 		'output' => array(),
@@ -239,6 +276,15 @@ class BP
 				
 			}
 		}
+		
+	}
+	
+	public function getUserTasks($user_id, $completed = false)
+	{
+		
+		$comp_mod = $completed ? ' AND `completed_at` > 0 ' : ' AND `completed_at` = 0 ';
+		
+		return $this->Azbn7->mdl('DB')->read('bp_task', "`to_user` = '{$user_id}' $comp_mod ORDER BY `id`");
 		
 	}
 	

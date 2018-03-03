@@ -59,6 +59,21 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 			) ENGINE=" . $this->Azbn7->mdl('DB')->engine . " DEFAULT CHARSET=" . $this->Azbn7->mdl('DB')->charset . ";
 		")
 		
+		->exec("CREATE TABLE IF NOT EXISTS `" . $this->Azbn7->mdl('DB')->t['bp_task'] . "` (
+				`id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				`stream` BIGINT DEFAULT '0',
+				`created_at` BIGINT DEFAULT '0',
+				`completed_at` BIGINT DEFAULT '0',
+				`from_user` BIGINT DEFAULT '0',
+				`to_user` BIGINT DEFAULT '0',
+				`title` VARCHAR(255) DEFAULT '',
+				`content` MEDIUMTEXT DEFAULT NULL,
+				`input` MEDIUMBLOB DEFAULT NULL,
+				`output` MEDIUMBLOB DEFAULT NULL,
+				`param` MEDIUMBLOB DEFAULT NULL
+			) ENGINE=" . $this->Azbn7->mdl('DB')->engine . " DEFAULT CHARSET=" . $this->Azbn7->mdl('DB')->charset . ";
+		")
+		
 	;
 	
 	
@@ -66,6 +81,8 @@ if(count($this->Azbn7->mdl('DB')->t)) {
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp.item.create', 'title' => 'Добавление бизнес-процессов'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp.item.update', 'title' => 'Изменение бизнес-процессов'));
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp.item.delete', 'title' => 'Удаление бизнес-процессов'));
+	
+	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp_task.all.access', 'title' => 'Доступ ко всем задачам процессов'));
 	
 	/*
 	$this->Azbn7->mdl('DB')->create('right', array('uid' => 'site.bp_stream.all.access', 'title' => 'Доступ к потокам бизнес-процессов'));
