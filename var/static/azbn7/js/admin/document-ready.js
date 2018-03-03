@@ -753,9 +753,9 @@
 							var html = '';
 							
 							if(in_search) {
-								html = '<i class="fa fa-plus" aria-hidden="true"></i>';
+								html = '<i class="fas fa-plus" ></i>';
 							} else {
-								html = '<i class="fa fa-times" aria-hidden="true"></i>';
+								html = '<i class="fas fa-times" ></i>';
 							}
 							
 							var a = $('<a/>', {

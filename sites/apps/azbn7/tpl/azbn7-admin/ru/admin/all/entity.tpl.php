@@ -152,7 +152,7 @@ if(count($param['items'])) {
 	<?
 	foreach($param['items'] as $v) {
 		
-		$item = $this->Azbn7->mdl('DB')->one($this->Azbn7->mdl('DB')->prefix . '_' . $param['type']['uid'], "entity = '{$v['id']}'");
+		$item = $this->Azbn7->mdl('DB')->one($this->Azbn7->mdl('Entity')->getTable($param['type']['uid']), "entity = '{$v['id']}'");
 		
 		?>
 			
