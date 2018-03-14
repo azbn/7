@@ -10,8 +10,11 @@ class Storage_MySQL
 	public $t = array();
 	public $prefix = '';
 	public $prefix_data = '';
+	public $prefix_redbeanphp = '';
 	public $charset = '';
 	public $engine = '';
+	public $use_redbeanphp = false;
+	//public static $R = R;
 	public $event_prefix = '';//'system.azbn7.mdl.storage_mysql';
 	
 	public function __construct()
@@ -26,21 +29,24 @@ class Storage_MySQL
 			$this->t = $db['t'];
 			$this->prefix = $db['prefix'];
 			$this->prefix_data = $db['prefix_data'];
+			$this->prefix_redbeanphp = $db['prefix_redbeanphp'];
 			$this->charset = $db['charset'];
 			$this->engine = $db['engine'];
+			$this->use_redbeanphp = $db['use_redbeanphp'];
 			
-			if($db['use_redbeanphp']) {
+			if($this->use_redbeanphp) {
 				
 				R::setup('mysql:host=' . $db['host'] . ';dbname=' . $db['db'], $db['user'], $db['pass']);
-				//R::freeze(true);
+				R::freeze($db['freeze_redbeanphp']);
+				
 				if (!R::testConnection()) {
 					
 				} else {
 					
 					$this->connection = &R::getPDO();
 					
-					R:ext('xdispense', function($tname){
-						return R::getRedBean()->dispense($tname);
+					R::ext('xdispense', function($tname){
+						return R::getRedBean()->dispense($this->prefix_redbeanphp . '_' . $tname);
 					});
 					
 				}
@@ -207,6 +213,5 @@ class Storage_MySQL
 		
 		return $this->connection->exec('DELETE FROM `' . $table . '` WHERE ' . $where);
 	}
-	
 	
 }
