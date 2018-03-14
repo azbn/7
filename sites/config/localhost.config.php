@@ -44,6 +44,7 @@ $CONFIG = array(
 							'engine' => 'MyISAM',//'InnoDB',
 							'prefix' => $app_uid,
 							'prefix_data' => 'z',
+							'use_redbeanphp' => false,
 							'max_value' => array(
 								'int' => '2147483647',
 								'bigint' => PHP_INT_MAX,//'9223372036854775807',

@@ -2,6 +2,8 @@
 
 namespace azbn7;
 
+use \RedBeanPHP\R as R;
+
 class Storage_MySQL
 {
 	public $connection = null;
@@ -27,7 +29,28 @@ class Storage_MySQL
 			$this->charset = $db['charset'];
 			$this->engine = $db['engine'];
 			
-			$this->connection = new \PDO('mysql:host=' . $db['host'] . ';dbname=' . $db['db'], $db['user'], $db['pass'], $db['connect_settings']);
+			if($db['use_redbeanphp']) {
+				
+				R::setup('mysql:host=' . $db['host'] . ';dbname=' . $db['db'], $db['user'], $db['pass']);
+				//R::freeze(true);
+				if (!R::testConnection()) {
+					
+				} else {
+					
+					$this->connection = &R::getPDO();
+					
+					R:ext('xdispense', function($tname){
+						return R::getRedBean()->dispense($tname);
+					});
+					
+				}
+				
+			} else {
+				
+				$this->connection = new \PDO('mysql:host=' . $db['host'] . ';dbname=' . $db['db'], $db['user'], $db['pass'], $db['connect_settings']);
+				
+			}
+			
 			//$this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 			$this->q('SET NAMES ' . $db['charset']);
 			
@@ -50,12 +73,16 @@ class Storage_MySQL
 	
 	public function disconnect()
 	{
+		
+		R::close();
+		
 		$this->connection = null;
 		
 		$this->Azbn7->event(array(
 			'action' => $this->event_prefix . '.disconnect.after',
 			'title' => 'azbn7.storage_mysql.disconnected',
 		));
+		
 	}
 	
 	public function c_s($str = '')
