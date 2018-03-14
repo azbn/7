@@ -11,13 +11,7 @@ define('AZBN7__IS_LINUX', (strtoupper(substr(PHP_OS, 0, 5)) === 'LINUX'));
 define('AZBN7__IS_WIN', (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'));
 define('AZBN7__ROOT_DIR', dirname(__FILE__));
 
-/*
-If you like your models to reside in the namespace \Model, you can set the following constant:
-//with namespace Model
-define('REDBEAN_MODEL_PREFIX', '\\Model\\')
-You can now create a model class like this:
-class \Model\Band extends \RedBeanPHP\SimpleModel { ... }
-*/
+define('REDBEAN_MODEL_PREFIX', '\\Azbn_ru\\RedBeanPHP\\Model\\');
 
 if(AZBN7__IS_CLI) {
 	@chdir(AZBN7__ROOT_DIR);

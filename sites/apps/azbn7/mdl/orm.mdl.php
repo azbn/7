@@ -14,10 +14,20 @@ class ORM
 		$this->event_prefix = strtolower(str_replace('\\', '.', static::class));
 	}
 	
+	public function build($type = '')
+	{
+		return R::xdispense($type);
+	}
+	
+	public function save($item)
+	{
+		return R::store($item);
+	}
+	
 	public function create($type = '', $params = array())
 	{
 		
-		$item = R::xdispense($type);
+		$item = $this->build($type);
 		
 		if(count($params)) {
 			foreach($params as $p_k => $p_v) {
@@ -25,21 +35,11 @@ class ORM
 			}
 		}
 		
-		$item_id = R::store($item);
+		$item_id = $this->save($item);
 		
 		return $item;
 		
 	}
-	
-	
-	public function test()
-	{
-		
-		
-		
-		
-	}
-	
 	
 	/*
 	
