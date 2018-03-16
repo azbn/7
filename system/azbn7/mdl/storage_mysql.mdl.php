@@ -79,8 +79,11 @@ class Storage_MySQL
 	
 	public function disconnect()
 	{
-		
-		R::close();
+		if($this->use_redbeanphp) {
+			
+			R::close();
+			
+		}
 		
 		$this->connection = null;
 		
