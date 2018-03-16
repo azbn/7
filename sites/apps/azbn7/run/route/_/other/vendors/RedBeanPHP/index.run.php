@@ -2,7 +2,7 @@
 
 if($this->Azbn7->mdl('DB')->use_redbeanphp) {
 	
-	var_dump($this->Azbn7->dmdl('ORM')->create('test', array(
+	$test = $this->Azbn7->dmdl('ORM')->create('test', array(
 		'name' => 'test',
 		'version' => $this->Azbn7->created_at,
 		't' => -1,
@@ -16,7 +16,9 @@ if($this->Azbn7->mdl('DB')->use_redbeanphp) {
 		),
 		*/
 		//'r' => 15,
-	)));
+	));
+	
+	var_dump($test->getMeta('type'));
 	
 	//var_dump($this->Azbn7->dmdl('ORM')->test());
 	
