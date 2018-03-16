@@ -41,6 +41,11 @@ class ORM
 		
 	}
 	
+	public function item($type = '', $id = 0)
+	{
+		return R::load($type, $id);
+	}
+	
 	/*
 	
 	$shop = R::dispense( 'shop' );
