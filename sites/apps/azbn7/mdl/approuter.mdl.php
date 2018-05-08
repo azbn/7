@@ -121,7 +121,7 @@ class AppRouter
 	public function checkRouteJSONExists($req)
 	{
 		
-		$res_file = $this->Azbn7->config['path']['app'] . '/route/' . implode('/', $req) . '/route.json';
+		$res_file = $this->Azbn7->config['path']['route'] . '/' . implode('/', $req) . '/route.json';
 		
 		//echo $res_file;
 		
